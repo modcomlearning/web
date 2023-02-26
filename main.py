@@ -1,5 +1,6 @@
 import flask
 from flask import *
+
 app = Flask(__name__)
 
 # set secret key to secure your session/make it unique
@@ -9,13 +10,15 @@ print(__name__)
 # http://127.0.0.1:5000/home
 
 import pymysql
+
+
 @app.route('/')
 def products():
     # Establish a dbase connection
     connection = pymysql.connect(host='localhost', user='root', password='',
-                                 database='flask_db')
+                                 database='DemoClassDB')
     # SQL 1  - Detergents
-    sqlDetergents = "SELECT * FROM products where product_category = 'Detergent'"
+    sqlDetergents = "SELECT * FROM products where product_category = 'Smartphone'"
     # Cursor - Used to run/execute above SQL
     cursorDetergents = connection.cursor()
     # Execute SQL
@@ -24,7 +27,7 @@ def products():
     detergents = cursorDetergents.fetchall()
 
     # SQL 2  - Smartphones
-    sqlSmartphones = "SELECT * FROM products where product_category = 'Detergent'"
+    sqlSmartphones = "SELECT * FROM products where product_category = 'Smartphone'"
     # Cursor - Used to run/execute above SQL
     cursorSmartphones = connection.cursor()
     # Execute SQL
@@ -32,18 +35,15 @@ def products():
     # Fetch Rows
     smartphones = cursorSmartphones.fetchall()
 
-
-    return render_template('products.html', detergents = detergents,
-                           smartphones = smartphones)
-
-
+    return render_template('products.html', detergents=detergents,
+                           smartphones=smartphones)
 
 
 @app.route('/single_item/<product_id>')
 def single_item(product_id):
     # Establish a dbase connection
     connection = pymysql.connect(host='localhost', user='root', password='',
-                                 database='flask_db')
+                                 database='DemoClassDB')
     # SQL  - %s is a placeholder
     sql = "SELECT * FROM products WHERE product_id = %s"
 
@@ -60,8 +60,7 @@ def single_item(product_id):
         return render_template('single_item.html', row=row)
 
 
-
-@app.route('/signup' , methods = ['POST', 'GET'])
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
         if "gender" not in request.form:
@@ -74,13 +73,13 @@ def signup():
             password2 = request.form['password2']
             gender = request.form['gender']
 
-            if len(password1)  < 8:
-                return render_template('signup.html', error = 'Password must more than 8 xters')
+            if len(password1) < 8:
+                return render_template('signup.html', error='Password must more than 8 xters')
             elif password1 != password2:
                 return render_template('signup.html', error='Password Do Not Match')
             else:
                 connection = pymysql.connect(host='localhost', user='root', password='',
-                                             database='flask_db')
+                                             database='DemoClassDB')
                 sql = ''' 
                      insert into users(username, password, gender, phone, email) 
                      values(%s, %s, %s, %s, %s)
@@ -94,16 +93,14 @@ def signup():
         return render_template('signup.html')
 
 
-
-
-@app.route('/signin' , methods = ['POST', 'GET'])
+@app.route('/signin', methods=['POST', 'GET'])
 def signin():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
         connection = pymysql.connect(host='localhost', user='root', password='',
-                                     database='flask_db')
+                                     database='DemoClassDB')
 
         sql = '''
            select * from users where username = %s and password = %s
@@ -114,20 +111,16 @@ def signin():
         if cursor.rowcount == 0:
             return render_template('signin.html', error='Invalid Credentials')
         else:
-            session['key'] = username # link the session key with username
-            return redirect('/') # redirect to product Default route
+            session['key'] = username  # link the session key with username
+            return redirect('/')  # redirect to product Default route
     else:
         return render_template('signin.html')
-
 
 
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect('/signin')
-
-
-
 
 
 # here below login
@@ -192,5 +185,3 @@ def mpesa_payment():
 
 
 app.run(debug=True)
-
-

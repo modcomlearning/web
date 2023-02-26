@@ -12,15 +12,15 @@
          {% include 'navbar.html' %}
           <section class="row">
                <div class="col-md-4">
-                      <img src="../static/images/{{ row[7] }}" alt="" width="300" height="300"
+                      <img src="../static/images/{{row[5]}}" alt="" width="300" height="300"
                       class="img-thumbnail shadow p-4"><br><br>
                       <h3>{{ row[1] }}</h3>
                </div>
 
               <div class="col-md-8">
-                     <p class="text-muted">{{ row[12] }}</p>
+                     <p class="text-muted">{{ row[2] }}</p>
                      <h4>KES {{ row[3] }}</h4>
-                     <b class="text-danger">{{ row[4] }}% Discount</b> <br><br>
+                     <b class="text-danger">Category: {{ row[4] }}</b> <br><br>
 
                       {% if session['key'] %}
                       <form action="/mpesa_payment" method="post">
