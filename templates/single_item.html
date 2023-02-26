@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</head>
+<body>
+     <div class="container-fluid">
+         {% include 'navbar.html' %}
+          <section class="row">
+               <div class="col-md-4">
+                      <img src="../static/images/{{ row[7] }}" alt="" width="300" height="300"
+                      class="img-thumbnail shadow p-4"><br><br>
+                      <h3>{{ row[1] }}</h3>
+               </div>
+
+              <div class="col-md-8">
+                     <p class="text-muted">{{ row[12] }}</p>
+                     <h4>KES {{ row[3] }}</h4>
+                     <b class="text-danger">{{ row[4] }}% Discount</b> <br><br>
+
+                      {% if session['key'] %}
+                      <form action="/mpesa_payment" method="post">
+                          <input type="hidden" name="id" value="{{row[0]}}"
+                          class="form-control"><br>
+
+                          <input type="number" name="qty" placeholder="How many Do you need?"
+                           class="form-control"><br>
+
+                          <input type="number" name="phone" placeholder="Enter Phone  2547XXXXXX"
+                           class="form-control"><br>
+
+                          <label for="">To Pay KES</label>
+                          <input type="number" name="amount" value="{{ row[3]}}"
+                           class="form-control" readonly><br>
+
+                          <input type="submit" value="Pay Now"
+                                 class="btn btn-dark">
+                      </form>
+                      {% else %}
+                      <h4>Please Sign in to make Payment!</h4>
+                      <a href="/signin" class="btn btn-dark btn-sm">Sign in Account</a>
+                      {% endif %}
+              </div>
+     </div>
+</body>
+</html>
