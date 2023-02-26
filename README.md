@@ -48,7 +48,7 @@ NB:
 Click on Browse and see the product you just inserted.
 ![image](https://user-images.githubusercontent.com/66998462/221431098-e51b6c4d-a938-4fdb-ba0c-0e586f6e6bbe.png)
 
-Works?  Similarly Please insert more product using the Query.
+Works?  Similarly Please insert more products using below Query.
 ```   
 INSERT INTO `products`(`product_name`, `product_desc`, `product_cost`, `product_category`, `product_image_name`) VALUES ('Infinix Hot 13','This is a nice phone for your personal activities','10000','Smartphone','infinix13.jpeg')
 ```
