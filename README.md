@@ -15,7 +15,8 @@ Create a Database(If you do not have one) named **YourClassNameDB** then Click o
 
 #### Step 2 -  Creating a Table.
 ##### Create a table named **products** with 5 Columns, See below
-![image](https://user-images.githubusercontent.com/66998462/221429703-810e25bc-542c-4f09-bf0d-6f618f245d60.png)
+![image](https://user-images.githubusercontent.com/66998462/221429817-99aec27d-c710-4e09-806f-5dccf6f70ba9.png)
+
 
 ![image](https://user-images.githubusercontent.com/66998462/221429742-2b9aad62-85e9-4707-a802-5e3d29deba08.png)
 
