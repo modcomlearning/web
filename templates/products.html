@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="../static/files/lightslider.css">
-        <link rel="stylesheet" href="../static/files/style.css">
-        <script src="../static/files/jquery.js"></script>
-        <script src="../static/files/lightslider.js"></script>
-        <script src="../static/files/script.js"></script>
+        <!--  CSS Supporting FIles  -->
+        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/files/css/lightslider.css">
+        <link rel="stylesheet" href="../static/files/css/style.css">
+        <!--  JS  Supporting FIles    -->
+        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/files/js/jquery.js"></script>
+        <script src="../static/files/js/lightslider.js"></script>
+        <script src="../static/files/js/script.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -19,7 +20,7 @@
         {% include 'carousel.html' %}
 
         <br><br>
-        <h2>Deals of the Day</h2>
+        <h2>Detergents</h2>
         <section class="slider p-4">
 	    <ul  class="cs-hidden autoWidth">
         {% for detergent in detergents %}
@@ -33,7 +34,7 @@
                 </div>
                 <div class="detail-box">
                     {{detergent[1]}}<br>
-                    <b>KES {{detergent[3]}}</b>
+                    <b class="text-warning">KES {{detergent[3]}}</b>
                 </div>
                 </div>
             </li>
@@ -42,28 +43,27 @@
         </section>
 
         <br><br>
-        <h2>Featured Products</h2>
+        <h2>Phones Products</h2>
         <section class="slider p-4">
 	    <ul  class="cs-hidden autoWidth">
-        {% for detergent in detergents %}
+        {% for smartphone in smartphones %}
           <li>
             <div class="box">
                 <div class="slide-img">
-                <img src="../static/images/{{ detergent[5]}}"  width="50" height="50">
+                <img src="../static/images/{{ smartphone[5]}}"  width="50" height="50">
                 <div class="overlay">
-                    <a href="/single_item/{{ detergent[0]}}" class="buy-btn">Buy Now</a>
+                    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
                 </div>
                 </div>
                 <div class="detail-box">
-                    {{detergent[1]}}<br>
-                    <b>KES {{detergent[3]}}</b>
+                    {{smartphone[1]}}<br>
+                    <b class="text-warning">KES {{smartphone[3]}}</b>
                 </div>
                 </div>
             </li>
            {% endfor %}
           </ul>
         </section>
-
 
         <br><br>
         <h2>Recently Visited</h2>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="detail-box">
                     {{detergent[1]}}<br>
-                    <b>KES {{detergent[3]}}</b>
+                    <b class="text-warning">KES {{detergent[3]}}</b>
                 </div>
                 </div>
             </li>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="detail-box">
                     {{detergent[1]}}<br>
-                    <b>KES {{detergent[3]}}</b>
+                    <b class="text-warning">KES {{detergent[3]}}</b>
                 </div>
                 </div>
             </li>

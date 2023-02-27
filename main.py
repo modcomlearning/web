@@ -11,7 +11,6 @@ print(__name__)
 
 import pymysql
 
-
 @app.route('/')
 def products():
     # Establish a dbase connection
@@ -27,7 +26,7 @@ def products():
     detergents = cursorDetergents.fetchall()
 
     # SQL 2  - Smartphones
-    sqlSmartphones = "SELECT * FROM products where product_category = 'Smartphone'"
+    sqlSmartphones = "SELECT * FROM products where product_category = 'x'"
     # Cursor - Used to run/execute above SQL
     cursorSmartphones = connection.cursor()
     # Execute SQL
@@ -63,15 +62,11 @@ def single_item(product_id):
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
-        if "gender" not in request.form:
-            return render_template('signup.html', error='Select a Gender')
-        else:
             username = request.form['username']
             email = request.form['email']
             phone = request.form['phone']
             password1 = request.form['password1']
             password2 = request.form['password2']
-            gender = request.form['gender']
 
             if len(password1) < 8:
                 return render_template('signup.html', error='Password must more than 8 xters')
@@ -81,11 +76,11 @@ def signup():
                 connection = pymysql.connect(host='localhost', user='root', password='',
                                              database='DemoClassDB')
                 sql = ''' 
-                     insert into users(username, password, gender, phone, email) 
-                     values(%s, %s, %s, %s, %s)
+                     insert into users(username, password, phone, email) 
+                     values(%s, %s, %s, %s)
                  '''
                 cursor = connection.cursor()
-                cursor.execute(sql, (username, password1, gender, phone, email))
+                cursor.execute(sql, (username, password1, phone, email))
                 connection.commit()
                 return render_template('signup.html', success='Registered Successfully')
 
@@ -129,7 +124,6 @@ import requests
 import datetime
 import base64
 from requests.auth import HTTPBasicAuth
-
 
 @app.route('/mpesa_payment', methods=['POST', 'GET'])
 def mpesa_payment():
