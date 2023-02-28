@@ -96,7 +96,7 @@ Line 10. Run App.  <br />
 
 Above code  What does the if __name__ == “__main__”: do? Before executing code, Python interpreter reads source file and define few special variables/global variables. <br /> If the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value “__main__”.   <br />Then the app can now be Run.
 
-Right inside app.py and select Run Python File in Terminal.
+Right inside app.py and select **Run Python File in Terminal.**
 Check the console output it given a Link http://127.0.0.1:5000 where your web application is now Hosted Locally on your computer.
 
 ![image](https://user-images.githubusercontent.com/66998462/221841991-2a1f6435-53f4-4e52-ba67-bbab7159b75c.png)
@@ -111,7 +111,7 @@ More Routes Practice, Try out these addition routes as you run from Browser.
 
 ### Step 5
 Creating Templates.
-Before creating templates create a Default root in app.py as shown <br />
+Before creating templates create a Default root in **app.py** as shown <br />
 ```
 # Default Home route
 @app.route('/')
@@ -124,8 +124,8 @@ Your Final app.py code looks like below screen, Observe Line 14, 15, 16.
 ![image](https://user-images.githubusercontent.com/66998462/221869846-b34391ea-abd6-43e8-966c-4805140a2cd9.png)
 
 
-Next we create the home.html page inside our **templates** Folder.
-Click on templates Folder, add a new File named home.html.
+Next we create the **home.html** page inside our **templates** Folder.
+Click on templates Folder, add a new File named **home.html**.
 Put below code inside.
 ```
 <!DOCTYPE html>
@@ -152,7 +152,7 @@ Put below code inside.
 ```
 
 Now Run your App.
-Right click inside app.py and the select **Run Python file in Terminal**
+Right click inside **app.py** and the select **Run Python file in Terminal**
 
 Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
 
