@@ -159,4 +159,35 @@ Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
 Your SokoGarden Site is Up!
 ![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
 
+### Step 6
+In home.html Inside container- fluid Class Create a Navbar
+Code.
+```
+<section class="row">
+        <div class="col-md-12">
+           <nav class="navbar navbar-expand-md navbar-light btn-light p-3">
+                   <a href="#" class="navbar-brand">Soko <b class="text-success">Garden</b></a>
+                   <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                       <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                   <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav">
+                             <a href="/" class="nav-item nav-link">Home</a>
+                             <a href="/" class="nav-item nav-link">Blog</a>
+                             <a href="/" class="nav-item nav-link">About US</a>
+                        </div>
+                       <div class="ms-auto">
+                        <!--    TODO Logout-->
+                       </div>
+
+                   </div>
+           </nav>
+        </div>
+   </section>
+   ```
+   
+   Now Run your code and access  http://127.0.0.1:5000/ 
+   The Navbar is Ready!
+   ![image](https://user-images.githubusercontent.com/66998462/221883745-e1d407e4-0da0-4788-a3db-fbf6d286c7ff.png)
 
