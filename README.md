@@ -54,6 +54,10 @@ INSERT INTO `products`(`product_name`, `product_desc`, `product_cost`, `product_
 ```
 
 ### Step 3
+### Introduction Notes
+https://coding.co.ke/notes/Flask/Flask_Notes_Introduction.pdf
+https://coding.co.ke/notes/Flask/Flask_Routing.pdf
+
 ### Flask Application
 Create a New Folder named YourClassFlask.
 Open this Folder in Your VS Code.
@@ -83,7 +87,7 @@ Explantion.
 Line 1: Imports Flask Framework Library which allows use to create web applications using Python. <br />
 Line 3: Create a Flask Application(Main App)<br />
 Line 5:  ```  @app.route('/hello') ```  Create a route that is accessed Via a web browser.<br />
-Line 6: Create a Function attached to above route, This function creates the functionality for /hello route. In this case it prints "Hello SokoGarden".
+Line 6: Create a Function attached to above route, This function creates the functionality for /hello route. In this case it prints "Hello SokoGarden".<br /><br />
 Line 10. Run App.  <br />
 ```  
     if __name__ == '__main__':
@@ -154,25 +158,6 @@ Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
 
 Your SokoGarden Site is Up!
 ![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
