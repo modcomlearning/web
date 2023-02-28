@@ -80,16 +80,16 @@ Next add below Code to **app.py** File
 ![image](https://user-images.githubusercontent.com/66998462/221838299-7f08d13d-5671-470b-90f0-906f0dc86a8c.png)
 
 Explantion.
-Line 1: Imports Flask Framework Library which allows use to create web applications using Python.
-Line 3: Create a Flask Application(Main App)
-Line 5:  ```  @app.route('/hello') ```  Create a route that is accessed Via a web browser.
+Line 1: Imports Flask Framework Library which allows use to create web applications using Python. <br />
+Line 3: Create a Flask Application(Main App)<br />
+Line 5:  ```  @app.route('/hello') ```  Create a route that is accessed Via a web browser.<br />
 Line 6: Create a Function attached to above route, This function creates the functionality for /hello route. In this case it prints "Hello SokoGarden".
-Line 10. Run App. Below code check if 
+Line 10. Run App.  <br />
 ```  if __name__ == '__main__':
           app.run()
 ```
 
-Above code  What does the if __name__ == “__main__”: do? Before executing code, Python interpreter reads source file and define few special variables/global variables. If the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value “__main__”.   Then the app can now be Run.
+Above code  What does the if __name__ == “__main__”: do? Before executing code, Python interpreter reads source file and define few special variables/global variables. <br /> If the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value “__main__”.   <br />Then the app can now be Run.
 
 Right inside app.py and select Run Python File in Terminal.
 Check the console output it given a Link http://127.0.0.1:5000 where your web application is now Hosted Locally on your computer.
@@ -106,7 +106,7 @@ More Routes Practice, Try out these addition routes as you run from Browser.
 
 ### Step 5
 Creating Templates.
-Before creating templates create a Default root in app.py as shown
+Before creating templates create a Default root in app.py as shown <br />
 ```
 # Default Home route
 @app.route('/')
