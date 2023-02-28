@@ -55,7 +55,7 @@ INSERT INTO `products`(`product_name`, `product_desc`, `product_cost`, `product_
 
 ### Step 3
 ### Introduction Notes
-https://coding.co.ke/notes/Flask/Flask_Notes_Introduction.pdf
+https://coding.co.ke/notes/Flask/Flask_Notes_Introduction.pdf  <br/> <br/>
 https://coding.co.ke/notes/Flask/Flask_Routing.pdf
 
 ### Flask Application
