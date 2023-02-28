@@ -85,7 +85,8 @@ Line 3: Create a Flask Application(Main App)<br />
 Line 5:  ```  @app.route('/hello') ```  Create a route that is accessed Via a web browser.<br />
 Line 6: Create a Function attached to above route, This function creates the functionality for /hello route. In this case it prints "Hello SokoGarden".
 Line 10. Run App.  <br />
-```  if __name__ == '__main__':
+```  
+    if __name__ == '__main__':
           app.run()
 ```
 
@@ -151,7 +152,7 @@ Right click inside app.py and the select **Run Python file in Terminal**
 
 Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
 
-Your SkyGarden Site is Up!
+Your SokoGarden Site is Up!
 ![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
 
 
