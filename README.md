@@ -74,7 +74,7 @@ Your Folder/Files Structure should look as below;
 ####Then Download more Files from http://coding.co.ke/notes/files.zip
 Extract It and Paste it in Your **static** Folder
 
-In below screen the File structure once files in pasted in Static Folder
+In below screen is the Folder/Files structure once (files Folder) is pasted in Static Folder
 ![image](https://user-images.githubusercontent.com/66998462/221841002-83f198a9-f441-4b84-97cc-8a827d88781a.png)
 
 You are now done with Folder and Files setup. Happy Coding!
