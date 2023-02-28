@@ -67,6 +67,104 @@ Your Folder/Files Structure should look as below;
 ![image](https://user-images.githubusercontent.com/66998462/221796643-7586f54f-f35e-4c0a-a91d-423340e977e3.png)
 
 
+####Then Download more Files from http://coding.co.ke/notes/files.zip
+Extract It and Paste it in Your **static** Folder
+
+In below screen the File structure once files in pasted in Static Folder
+![image](https://user-images.githubusercontent.com/66998462/221841002-83f198a9-f441-4b84-97cc-8a827d88781a.png)
+
+You are now done with Folder and Files setup. Happy Coding!
+
+### Step 4
+Next add below Code to **app.py** File
+![image](https://user-images.githubusercontent.com/66998462/221838299-7f08d13d-5671-470b-90f0-906f0dc86a8c.png)
+
+Explantion.
+Line 1: Imports Flask Framework Library which allows use to create web applications using Python.
+Line 3: Create a Flask Application(Main App)
+Line 5:  ```  @app.route('/hello') ```  Create a route that is accessed Via a web browser.
+Line 6: Create a Function attached to above route, This function creates the functionality for /hello route. In this case it prints "Hello SokoGarden".
+Line 10. Run App. Below code check if 
+```  if __name__ == '__main__':
+          app.run()
+```
+
+Above code  What does the if __name__ == “__main__”: do? Before executing code, Python interpreter reads source file and define few special variables/global variables. If the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value “__main__”.   Then the app can now be Run.
+
+Right inside app.py and select Run Python File in Terminal.
+Check the console output it given a Link http://127.0.0.1:5000 where your web application is now Hosted Locally on your computer.
+
+![image](https://user-images.githubusercontent.com/66998462/221841991-2a1f6435-53f4-4e52-ba67-bbab7159b75c.png)
+
+Now to run your web application on the browser. Enter  http://127.0.0.1:5000/hello  on Your browser address bar.
+Your app now runs on the Web!.
+![image](https://user-images.githubusercontent.com/66998462/221842464-68b55b91-2c32-448b-b6df-8999c6af67b8.png)
+
+More Routes Practice, Try out these addition routes as you run from Browser.
+![image](https://user-images.githubusercontent.com/66998462/221869494-8e706e45-c578-4f03-a50f-53e88633148e.png)
+
+
+### Step 5
+Creating Templates.
+Before creating templates create a Default root in app.py as shown
+```
+# Default Home route
+@app.route('/')
+def home():
+    return render_template('home.html')
+```
+
+in this route it returns a HTML page named **home.html**
+Your Final app.py code looks like below screen, Observe Line 14, 15, 16.
+![image](https://user-images.githubusercontent.com/66998462/221869846-b34391ea-abd6-43e8-966c-4805140a2cd9.png)
+
+
+Next we create the home.html page inside our **templates** Folder.
+Click on templates Folder, add a new File named home.html.
+Put below code inside.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+        <!--  CSS Supporting FIles  -->
+        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/files/css/lightslider.css">
+        <link rel="stylesheet" href="../static/files/css/style.css">
+        <!--  JS  Supporting FIles    -->
+        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/files/js/jquery.js"></script>
+        <script src="../static/files/js/lightslider.js"></script>
+        <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+          <h1>Hello Soko Garden!</h1>
+    </div>
+</body>
+</html>
+```
+
+Now Run your App.
+Right click inside app.py and the select **Run Python file in Terminal**
+
+Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
+
+Your SkyGarden Site is Up!
+![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
