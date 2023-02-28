@@ -1,6 +1,6 @@
 ####  E-COM
-##### This is an application that allow customers to sign up, sign in and purchase products using LIpa na MPESA, The Application is inspired by Online Shopping that are on the rise, such as Jumia, Kilimall etc.
-##### This is Guide in Building the application
+##### This is an application that allow customers to sign up, sign in, view products and purchase products using LIpa na MPESA, Both the Frontend and Backend will be incorporated. The Application is inspired by Online Shopping that are on the rise, such as Jumia, Kilimall etc.
+##### This is the Guide in Building the Full Application. 
 ### Requirements
 #### 1. XAMPP - MySQL
 #### 2. Visual Studio Code.
@@ -158,7 +158,5 @@ Then on Any Browser type  http://127.0.0.1:5000/   on Address Bar.
 
 Your SokoGarden Site is Up!
 ![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
-
-
 
 
