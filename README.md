@@ -53,6 +53,26 @@ Works?  Similarly Please insert more products using below Query.
 INSERT INTO `products`(`product_name`, `product_desc`, `product_cost`, `product_category`, `product_image_name`) VALUES ('Infinix Hot 13','This is a nice phone for your personal activities','10000','Smartphone','infinix13.jpeg')
 ```
 
+### Step 3
+### Flask Application
+Create a New Folder named YourClassFlask.
+Open this Folder in Your VS Code.
+![image](https://user-images.githubusercontent.com/66998462/221795955-f3bf3fef-4f3d-4f62-be89-23cc0f8c6005.png)
+
+Inside YourClassFlask Folder, Create;
+1. 1 File named app.py     
+2. 2 Folders named templates and static
+
+Your Folder/Files Structure should look as below;
+![image](https://user-images.githubusercontent.com/66998462/221796643-7586f54f-f35e-4c0a-a91d-423340e977e3.png)
+
+
+
+
+
+
+
+
 
 
 
