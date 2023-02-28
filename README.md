@@ -96,7 +96,7 @@ Line 10. Run App.  <br />
 
 Above code  What does the if __name__ == “__main__”: do? Before executing code, Python interpreter reads source file and define few special variables/global variables. <br /> If the python interpreter is running that module (the source file) as the main program, it sets the special __name__ variable to have a value “__main__”.   <br />Then the app can now be Run.
 
-Right inside app.py and select **Run Python File in Terminal.**
+Right click inside app.py and select **Run Python File in Terminal.**
 Check the console output it given a Link http://127.0.0.1:5000 where your web application is now Hosted Locally on your computer.
 
 ![image](https://user-images.githubusercontent.com/66998462/221841991-2a1f6435-53f4-4e52-ba67-bbab7159b75c.png)
