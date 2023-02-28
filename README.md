@@ -1,5 +1,5 @@
 ####  E-COM
-##### This is an application that allow customers to sign up, sign in and purchase products using LIpa na MPESA.
+##### This is an application that allow customers to sign up, sign in and purchase products using LIpa na MPESA, The Application is inspired by Online Shopping that are on the rise, such as Jumia, Kilimall etc.
 ##### This is Guide in Building the application
 ### Requirements
 #### 1. XAMPP - MySQL
