@@ -224,15 +224,21 @@ Code.
    </section>
    ```
    
+   
    Then in **home.html** file inside container-fluid write below code.
+   
+  
    ```
    <div class="container-fluid">
           {% include 'navbar.html' %}
           <br>
           {% include 'carousel.html' %}
     </div>
+    
     ```
-    ```
+    
+    
+    
     
    Above code is using Jinja2 Templating Engine that helps html to include other Files i.e navbar.html and carousel.html
    
