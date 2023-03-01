@@ -160,7 +160,8 @@ Your SokoGarden Site is Up!
 ![image](https://user-images.githubusercontent.com/66998462/221870122-1b14dde5-d2a7-4acf-9515-0b235a7fb508.png)
 
 ### Step 6
-In home.html Inside container- fluid Class Create a Navbar
+Inside templates Folder create a File named **navbar.html**
+Write this code inside navbar.html
 Code.
 ```
 <section class="row">
@@ -187,8 +188,82 @@ Code.
    </section>
    ```
    
+   Next Inside templates Create a File named **carousel.html**
+   Inside this File add below code to create a carousel - sliding image.
+   ```
+    <section class="row">
+        <div class="col-md-12">
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-pause="false">
+                     <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../static/files/slide1.jpg" class="d-block w-100" alt="Slide 1" height="400">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some placeholder content for the first slide.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../static/files/slide2.jpg" class="d-block w-100" alt="Slide 2" height="400">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some placeholder content for the first slide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                     <!-- Carousel controls -->
+                    <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+            </div>
+        </div>
+   </section>
+   ```
+   
+   Then in home.html file inside container-fluid write below code.
+   ```
+   <div class="container-fluid">
+          {% include 'navbar.html' %}
+          <br>
+          {% include 'carousel.html' %}
+    </div>
+    ```
+    
+   Above code is using Jinja2 Templating Engine that helps html to include other Files i.e navbar.html and carousel.html
+   
+   Your Final Code for home.html looks Like below
+   ```
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+        <!--  CSS Supporting FIles  -->
+        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/files/css/lightslider.css">
+        <link rel="stylesheet" href="../static/files/css/style.css">
+        <!--  JS  Supporting FIles    -->
+        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/files/js/jquery.js"></script>
+        <script src="../static/files/js/lightslider.js"></script>
+        <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+          {% include 'navbar.html' %}
+          <br>
+          {% include 'carousel.html' %}
+    </div>
+</body>
+</html>
+```
+
    Now Run your code and access  http://127.0.0.1:5000/ 
-   The Navbar is Ready!
- ![image](https://user-images.githubusercontent.com/66998462/221884255-a7ec8793-521f-4a48-8e22-8a89e06207df.png)
+   The Navbar and Carousel is Ready!
+   ![image](https://user-images.githubusercontent.com/66998462/222125335-4912a000-e175-4f81-ba17-9c08623a9d89.png)
 
 
