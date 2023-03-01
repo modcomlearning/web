@@ -234,18 +234,15 @@ Code.
           <br>
           {% include 'carousel.html' %}
     </div>
-    
-    ```
-    
-    
-    
-    
+   ```
+  
    Above code is using Jinja2 Templating Engine that helps html to include other Files i.e navbar.html and carousel.html
    
    Your Final Code for **home.html** looks Like below;
-   
-   ```
-         <!DOCTYPE html>
+    
+    
+    ```
+     <!DOCTYPE html>
       <html lang="en">
       <head>
           <meta charset="UTF-8">
