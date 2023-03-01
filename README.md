@@ -224,7 +224,7 @@ Code.
    </section>
    ```
    
-   Then in home.html file inside container-fluid write below code.
+   Then in **home.html** file inside container-fluid write below code.
    ```
    <div class="container-fluid">
           {% include 'navbar.html' %}
@@ -235,32 +235,33 @@ Code.
     
    Above code is using Jinja2 Templating Engine that helps html to include other Files i.e navbar.html and carousel.html
    
-   Your Final Code for home.html looks Like below
+   Your Final Code for **home.html** looks Like below;
+   
    ```
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-        <!--  CSS Supporting FIles  -->
-        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../static/files/css/lightslider.css">
-        <link rel="stylesheet" href="../static/files/css/style.css">
-        <!--  JS  Supporting FIles    -->
-        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
-        <script src="../static/files/js/jquery.js"></script>
-        <script src="../static/files/js/lightslider.js"></script>
-        <script src="../static/files/js/script.js"></script>
-</head>
-<body>
-    <div class="container-fluid">
-          {% include 'navbar.html' %}
-          <br>
-          {% include 'carousel.html' %}
-    </div>
-</body>
-</html>
-```
+         <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <title>Home</title>
+              <!--  CSS Supporting FIles  -->
+              <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+              <link rel="stylesheet" href="../static/files/css/lightslider.css">
+              <link rel="stylesheet" href="../static/files/css/style.css">
+              <!--  JS  Supporting FIles    -->
+              <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+              <script src="../static/files/js/jquery.js"></script>
+              <script src="../static/files/js/lightslider.js"></script>
+              <script src="../static/files/js/script.js"></script>
+      </head>
+      <body>
+          <div class="container-fluid">
+                {% include 'navbar.html' %}
+                <br>
+                {% include 'carousel.html' %}
+          </div>
+      </body>
+      </html>
+      ```
 
    Now Run your code and access  http://127.0.0.1:5000/ 
    The Navbar and Carousel is Ready!
