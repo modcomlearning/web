@@ -295,6 +295,7 @@ Code.
    First install pymysql using **pip3 install pymysql**.
    Below is the improved home route. <br/><br/>
    
+   
    ```
    # Default Home route
    # Import Pymysql
@@ -315,7 +316,9 @@ Code.
        # TODO SQL 2  - Smartphones
        return render_template('home.html', smartphones=smartphones)
    
-   ```
+    ```
+    
+    
    
    
    
