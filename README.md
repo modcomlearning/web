@@ -295,9 +295,9 @@ Code.
    First install pymysql using **pip3 install pymysql**.
    Below is the improved home route. <br/><br/>
    
-    ```
+   
    # Default Home route
-   # Import Pymysql
+   ```
    import pymysql
    def home():
        # Establish a dabase connection
@@ -314,10 +314,11 @@ Code.
 
        # TODO SQL 2  - Smartphones
        return render_template('home.html', smartphones=smartphones)
+    
+    
     ```
-  
-  #
-  ### Explanation
+     
+     ### Explanation
      Line 301: Import pymysql module, used in database connection
      Line 304: Connect to your database, Please remember to change to your DBASE.
      Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
