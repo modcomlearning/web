@@ -303,7 +303,7 @@ Code.
        # Establish a dabase connection
        connection = pymysql.connect(host='localhost', user='root', password='',
                                     database='DemoClassDB')
-       # SQL 1  - Detergents
+       # SQL 1  - Smartphone
        sqlSmartphone = "SELECT * FROM products where product_category = 'Smartphone'"
        # Cursor - Used to run/execute above SQL
        cursorSmartphone = connection.cursor()
@@ -314,7 +314,8 @@ Code.
 
        # TODO SQL 2  - Smartphones
        return render_template('home.html', smartphones=smartphones)
+       ```
        
-     ```
+       
+       
      
-     Hi
