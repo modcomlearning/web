@@ -440,10 +440,11 @@ Below we update above **home.html**,  Update code is added on Line 356. Below is
 
 
 
-Finally we need to upload the images to static Folder, FInd the images on below link
-http://coding.co.ke/files/    Extract photos.zip and Paste the photos Folder in your static Folder
+Finally we need to upload the images to static Folder, FInd the images on below link<br/>
+http://coding.co.ke/files/    Extract photos.zip and Paste the photos Folder in your static Folder <br/>
 NB: The images names must be the same withs once inserted in the database on **Step 2 Earlier **
 
+<br/>
 Now Run your App. <br/>
 Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
