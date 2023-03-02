@@ -317,8 +317,7 @@ Code.
  
  ```
  
- # Default Home route
-       
+ ### Explanation
      Line 301: Import pymysql module, used in database connection
      Line 304: Connect to your database, Please remember to change to your DBASE.
      Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
@@ -327,4 +326,129 @@ Code.
      Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
      Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
            
+       
+       
+   ## Step 8
+   In this section we now update home.html.
+   At the moment your home.html looks like below;
+   ```
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+        <!--  CSS Supporting FIles  -->
+        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/files/css/lightslider.css">
+        <link rel="stylesheet" href="../static/files/css/style.css">
+        <!--  JS  Supporting FIles    -->
+        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/files/js/jquery.js"></script>
+        <script src="../static/files/js/lightslider.js"></script>
+        <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+          {% include 'navbar.html' %}
+          <br>
+          {% include 'carousel.html' %}
+          
+          <!-- CODE HERE -->
+          
+    </div>
+</body>
+</html>
+```
+
+Below we update above home.html,  Update code is added on Line 356.
+
+   ```
+    <br>
+     <section class="slider p-4">
+    <ul  class="cs-hidden autoWidth">
+     {% for smartphone in smartphones %}
+       <li>
+         <div class="box">
+             <div class="slide-img">
+             <img src="../static/images/{{ smartphone[5]}}"  width="50" height="50">
+             <div class="overlay">
+                 <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+             </div>
+             </div>
+             <div class="detail-box">
+                 {{smartphone[1]}}<br>
+                 <b class="text-warning">KES {{smartphone[3]}}</b>
+             </div>
+             </div>
+         </li>
+        {% endfor %}
+       </ul>
+   </section>
+  ```
+  
+  
+  
+  Your Final **home.html** should look like below code;
+  
+  ```
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+        <!--  CSS Supporting FIles  -->
+        <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/files/css/lightslider.css">
+        <link rel="stylesheet" href="../static/files/css/style.css">
+        <!--  JS  Supporting FIles    -->
+        <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/files/js/jquery.js"></script>
+        <script src="../static/files/js/lightslider.js"></script>
+        <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+          {% include 'navbar.html' %}
+          <br>
+          {% include 'carousel.html' %}
+          <br>
+           <section class="slider p-4">
+	    <ul  class="cs-hidden autoWidth">
+        {% for smartphone in smartphones %}
+          <li>
+            <div class="box">
+                <div class="slide-img">
+                <img src="../static/images/{{ smartphone[5]}}"  width="50" height="50">
+                <div class="overlay">
+                    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+                </div>
+                </div>
+                <div class="detail-box">
+                    {{smartphone[1]}}<br>
+                    <b class="text-warning">KES {{smartphone[3]}}</b>
+                </div>
+                </div>
+            </li>
+           {% endfor %}
+          </ul>
+        </section>
+    </div>
+</body>
+</html>
+```
+
+
+Done
+
+
+
+        
+        
+
+
+
+
+
+       
+       
        
