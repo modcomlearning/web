@@ -314,8 +314,7 @@ Code.
 
        # TODO SQL 2  - Smartphones
        return render_template('home.html', smartphones=smartphones)
-       
-    
+     
      ```
      
      ### Explanation
