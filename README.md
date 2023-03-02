@@ -361,6 +361,7 @@ Below we update above home.html,  Update code is added on Line 356. Below is the
     <br>
      <section class="slider p-4">
     <ul  class="cs-hidden autoWidth">
+    
      {% for smartphone in smartphones %}
        <li>
          <div class="box">
@@ -409,22 +410,26 @@ Below we update above home.html,  Update code is added on Line 356. Below is the
           <br>
            <section class="slider p-4">
 	    <ul  class="cs-hidden autoWidth">
-        {% for smartphone in smartphones %}
-          <li>
-            <div class="box">
-                <div class="slide-img">
-                <img src="../static/images/{{ smartphone[5]}}"  width="50" height="50">
-                <div class="overlay">
-                    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
-                </div>
-                </div>
-                <div class="detail-box">
-                    {{smartphone[1]}}<br>
-                    <b class="text-warning">KES {{smartphone[3]}}</b>
-                </div>
-                </div>
-            </li>
-           {% endfor %}
+	        <!-- Below we loop through each smartphone retrieved. -->
+		{% for smartphone in smartphones %}
+		  <li>
+		    <div class="box">
+			<div class="slide-img">
+			<!-- Below we place the image in the image tag -->
+			<img src="../static/photos/{{ smartphone[5]}}"  width="50" height="50">
+			<div class="overlay">
+			    <!-- This is a Link to Buy Now, The route on href will be used Later in Next Steps -->
+			    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+			</div>
+			</div>
+			<div class="detail-box">
+			    <!-- Below we provide the product name and Cost. -->
+			    {{smartphone[1]}}<br>
+			    <b class="text-warning">KES {{smartphone[3]}}</b>
+			</div>
+			</div>
+		    </li>
+		   {% endfor %}
           </ul>
         </section>
     </div>
@@ -432,17 +437,20 @@ Below we update above home.html,  Update code is added on Line 356. Below is the
 </html>
 ```
 
-Finally we need to upload the images to static Folder (To be provided)
+
+
+Finally we need to upload the images to static Folder, FInd the images on below link
+http://coding.co.ke/files/    Extract photos.zip and Paste the photos Folder in your static Folder
+NB: The images names must be the same withs once inserted in the database on **Step 2 Earlier **
 
 Now Run your App. <br/>
 Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 
+Below is the Output
+![image](https://user-images.githubusercontent.com/66998462/222487250-949b654f-ae05-4a09-a3d0-52da2ae3a239.png)
 
 
+End of Part 1
 
-
-       
-       
-       
