@@ -288,11 +288,12 @@ Code.
       @app.route('/')
       def home():
           return render_template('home.html')
-    ```
+   
+   ```
    
    2. Update the home route to fetch data from the database.
    First install pymysql using **pip3 install pymysql**.
-   Below is the improved home route.
+   Below is the improved home route. <br/><br/>
    
    ```
    # Default Home route
@@ -315,7 +316,10 @@ Code.
 
        return render_template('home.html', smartphones=smartphones)
        
+     
      ```
+     
+     
    
    
    
