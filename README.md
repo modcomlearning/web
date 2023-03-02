@@ -271,4 +271,39 @@ Code.
    The Navbar and Carousel is Ready!
    ![image](https://user-images.githubusercontent.com/66998462/222125335-4912a000-e175-4f81-ba17-9c08623a9d89.png)
 
+   
+   ## Step 7
+   In this section we will learn Fetching data From MySQL.
+   Before proceeding You need the following <br/> 
+   1. Your XAMPP Server Must be running
+   2. You have database and
+   3. You have a products table with a number of products.
+
+   If you do not have above Please **Refer Step 2 in this document**
+   
+   1. Fetching Records.
+   In ** app.py** check the home route, If not Present please create It.
+   ```
+      # Default Home route
+      @app.route('/')
+      def home():
+          return render_template('home.html')
+    ```
+   
+   2. Update the home route to fetch data from the database.
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+
+
 
