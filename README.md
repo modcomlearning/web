@@ -317,7 +317,7 @@ Code.
        return render_template('home.html', smartphones=smartphones)
    
     ```
-    
+    ```
      ### Explanation
      Line 301: Import pymysql module, used in database connection
      Line 304: Connect to your database, Please remember to change to your DBASE.
