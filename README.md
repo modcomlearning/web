@@ -296,7 +296,7 @@ Code.
    Below is the improved home route. <br/><br/>
    
    
-   
+   ```
    # Default Home route
    # Import Pymysql
    import pymysql
@@ -318,7 +318,7 @@ Code.
    
     ```
     
-    ### Explanation
+     ### Explanation
      Line 301: Import pymysql module, used in database connection
      Line 304: Connect to your database, Please remember to change to your DBASE.
      Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
@@ -326,10 +326,6 @@ Code.
      Line 311: Execute SQL using the Cursor.
      Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
      Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
-    
-    
-   
-   
    
    
    
