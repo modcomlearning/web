@@ -316,8 +316,6 @@ Code.
        return render_template('home.html', smartphones=smartphones)
     
     
-    ```
-    
      ### Explanation
      Line 301: Import pymysql module, used in database connection
      Line 304: Connect to your database, Please remember to change to your DBASE.
@@ -326,6 +324,10 @@ Code.
      Line 311: Execute SQL using the Cursor.
      Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
      Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
+    
+    ```
+    
+    
     
     
     
