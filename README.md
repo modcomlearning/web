@@ -319,5 +319,12 @@ Code.
  
  # Default Home route
        
-       
+     Line 301: Import pymysql module, used in database connection
+     Line 304: Connect to your database, Please remember to change to your DBASE.
+     Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
+     Line 309: Create a Cursor using the connection, The cursor role is to execute/Run SQL on Line 307.
+     Line 311: Execute SQL using the Cursor.
+     Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
+     Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
+           
        
