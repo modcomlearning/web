@@ -295,38 +295,10 @@ Code.
    First install pymysql using **pip3 install pymysql**.
    Below is the improved home route. <br/><br/>
    
-   
-   ```
-   # Default Home route
-   # Import Pymysql
-   import pymysql
-   def home():
-       # Establish a dabase connection
-       connection = pymysql.connect(host='localhost', user='root', password='',
-                                    database='DemoClassDB')
-       # SQL 1  - Smartphone
-       sqlSmartphone = "SELECT * FROM products where product_category = 'Smartphone'"
-       # Cursor - Used to run/execute above SQL
-       cursorSmartphone = connection.cursor()
-       # Execute SQL
-       cursorSmartphone.execute(sqlSmartphone)
-       # Fetch Rows
-       smartphones = cursorSmartphone.fetchall()
-
-       # TODO SQL 2  - Smartphones
-       return render_template('home.html', smartphones=smartphones)
-   
     ```
+      Code
     ```
-     ### Explanation
-     Line 301: Import pymysql module, used in database connection
-     Line 304: Connect to your database, Please remember to change to your DBASE.
-     Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
-     Line 309: Create a Cursor using the connection, The cursor role is to execute/Run SQL on Line 307.
-     Line 311: Execute SQL using the Cursor.
-     Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
-     Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
-   
-   
-   
-   
+  
+  ### Ex
+  
+  
