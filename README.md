@@ -299,34 +299,29 @@ Code.
    # Default Home route
    ```
    import pymysql
+   @app.route('/')
    def home():
-       # Establish a dabase connection
+       # Establish a database connection
        connection = pymysql.connect(host='localhost', user='root', password='',
                                     database='DemoClassDB')
-       # SQL 1  - Smartphone
+      ** # SQL 1  - Select Products by Smartphone Category**
        sqlSmartphone = "SELECT * FROM products where product_category = 'Smartphone'"
-       # Cursor - Used to run/execute above SQL
+       
+       **# Cursor - Used to run/execute above SQL**
        cursorSmartphone = connection.cursor()
-       # Execute SQL
+       
+      ** # Execute SQL**
        cursorSmartphone.execute(sqlSmartphone)
-       # Fetch Rows
+       
+      ** # Fetch Rows**
        smartphones = cursorSmartphone.fetchall()
 
-       # TODO SQL 2  - Smartphones
+       **# TODO SQL 2  - Smartphones**
+       
+       # Return smartphones to **home.html**
        return render_template('home.html', smartphones=smartphones)
  
  ```
- 
- ### Explanation
-     Line 301: Import pymysql module, used in database connection
-     Line 304: Connect to your database, Please remember to change to your DBASE.
-     Line 307: Create an SQL Query that selects data from products table based on 'Smartphone' Category.
-     Line 309: Create a Cursor using the connection, The cursor role is to execute/Run SQL on Line 307.
-     Line 311: Execute SQL using the Cursor.
-     Line 313: Fetch all rows returned by the SQL Query, Store the rows in 'smartphones' variable.
-     Line 316: Return the 'smartphones' variable(Returned rows) to **home.html** so that they can be displayed to the user. 
-           
-       
        
    ## Step 8
    In this section we now update home.html.
@@ -360,7 +355,7 @@ Code.
 </html>
 ```
 
-Below we update above home.html,  Update code is added on Line 356.
+Below we update above home.html,  Update code is added on Line 356. Below is the code snippet to be added.
 
    ```
     <br>
@@ -437,13 +432,12 @@ Below we update above home.html,  Update code is added on Line 356.
 </html>
 ```
 
+Finally we need to upload the images to static Folder (To be provided)
 
-Done
+Now Run your App.
+Right click inside **app.py** and the select **Run Python file in Terminal**
+Now access  http://127.0.0.1:5000/ From your browser.
 
-
-
-        
-        
 
 
 
