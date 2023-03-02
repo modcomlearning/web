@@ -324,8 +324,8 @@ Code.
  ```
        
    ## Step 8
-   In this section we now update home.html.
-   At the moment your home.html looks like below;
+   In this section we now update **home.html.**
+   At the moment your **home.html** looks like below;
    ```
   <!DOCTYPE html>
 <html lang="en">
@@ -355,7 +355,7 @@ Code.
 </html>
 ```
 
-Below we update above home.html,  Update code is added on Line 356. Below is the code snippet to be added.
+Below we update above **home.html**,  Update code is added on Line 356. Below is the code snippet to be added.
 
    ```
     <br>
@@ -429,6 +429,7 @@ Below we update above home.html,  Update code is added on Line 356. Below is the
 			</div>
 			</div>
 		    </li>
+		    <!-- End for Loop -->
 		   {% endfor %}
           </ul>
         </section>
