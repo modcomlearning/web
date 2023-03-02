@@ -291,6 +291,32 @@ Code.
     ```
    
    2. Update the home route to fetch data from the database.
+   First install pymysql using **pip3 install pymysql**.
+   Below is the improved home route.
+   
+   ```
+   # Default Home route
+   # Import Pymysql
+   import pymysql
+   def home():
+       # Establish a dabase connection
+       connection = pymysql.connect(host='localhost', user='root', password='',
+                                    database='DemoClassDB')
+       # SQL 1  - Detergents
+       sqlSmartphone = "SELECT * FROM products where product_category = 'Smartphone'"
+       # Cursor - Used to run/execute above SQL
+       cursorSmartphone = connection.cursor()
+       # Execute SQL
+       cursorSmartphone.execute(sqlSmartphone)
+       # Fetch Rows
+       smartphones = cursorSmartphone.fetchall()
+
+       # TODO SQL 2  - Smartphones
+
+       return render_template('home.html', smartphones=smartphones)
+       
+     ```
+   
    
    
    
