@@ -434,9 +434,9 @@ Below we update above home.html,  Update code is added on Line 356. Below is the
 
 Finally we need to upload the images to static Folder (To be provided)
 
-Now Run your App.
-Right click inside **app.py** and the select **Run Python file in Terminal**
-Now access  http://127.0.0.1:5000/ From your browser.
+Now Run your App. <br/>
+Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
+Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 
 
