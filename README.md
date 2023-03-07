@@ -454,6 +454,84 @@ Below is the Output
 ![image](https://user-images.githubusercontent.com/66998462/222487250-949b654f-ae05-4a09-a3d0-52da2ae3a239.png)
 
 
+
+## Step 9
+In this step we will create a Page which displays when a product is clicked from Home Page.  From Home.html, each product had an Overlay and a Buy Button, It looked something like, Please refer your home.html. Please check Step 8.
+```
+<div class="overlay">
+    <!-- This is a Link to Buy Now, The route on href will be used Later in Next Steps -->
+    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+</div>
+```
+We need to provide a route in href = "", <a href="/single/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>, passing along the product ID. Here i use 
+{{ smartphone[0]}} since i used it in Step 8.  This means when you click on Buy Now it Navigates to /single route.
+
+
+Below we create a route named /single. Open app.py and create below route.
+```
+# Get Single Item
+@app.route('/single/<product_id>')
+def single(product_id):
+    # Establish a dbase connection
+    connection = pymysql.connect(host='localhost', user='root', password='',
+                                 database='DemoClassDB')
+				 
+    # Create SQL  - %s is a placeholder, which will take the actual ID during Query Execution.
+    sql1 = "SELECT * FROM products WHERE product_id = %s"
+
+    # Cursor - Used to run/execute above SQL
+    cursor1 = connection.cursor()
+
+    # Execute SQL providing product_id - NB: Sql had a placeholder in the Where clause thats why we provide the product_id
+    cursor1.execute(sql1, (product_id))
+
+    # Get the product retrieved 
+    product = cursor1.fetchone()
+    return render_template('single.html', product=product)
+ ```
+ 
+ 
+Then in templates Folder Create a Page named single.html and place Below Code.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+     <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+      <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+     <div class="container-fluid">
+         {% include 'navbar.html' %}
+          <section class="row">
+               <div class="col-md-4">
+                      <img src="../static/photos/{{product[5]}}" alt="" width="300" height="300"
+                      class="img-thumbnail shadow p-4"><br><br>
+                      <h3>{{ product[1] }}</h3>
+               </div>
+
+              <div class="col-md-8">
+                     <p class="text-muted">{{ product[2] }}</p>
+                     <h4>KES {{ product[3] }}</h4>
+                     <b class="text-danger">Category: {{ product[4] }}</b> <br><br>
+              </div>
+     </div>
+</body>
+</html>
+```
+
+
+
+
+
+
+
+
+
+
+
+
 End of Part 1
 
 
