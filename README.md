@@ -538,7 +538,8 @@ When You Click on One Product  - Buy Now
 ![image](https://user-images.githubusercontent.com/66998462/223324142-4ba6f95a-b149-4abe-b0fa-af1c6821f674.png)
 
 
-## Step 10, This is an Optional Step But It can be done to provide More similar Product to the product displayed in Image above
+## Step 10, This is an Optional Step But It can be done to provide More similar Product to the product displayed in Image above.
+We Update the code to also select similar products based on Current product Category.
 Update your route to retrieve similar products your **/single** route Looks like below
 ```
 # Get Single Item
@@ -575,7 +576,7 @@ def single(product_id):
     return render_template('single.html', product=product, similar = similar)
    ```
    
-Your **single.html **should be updated to Look as below.
+Your **single.html** should be updated to Look as below. We Bind similar products
    
    ```
    <!DOCTYPE html>
