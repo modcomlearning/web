@@ -634,8 +634,133 @@ Now access  http://127.0.0.1:5000/ From your browser. <br/>
 When your Click on One Product From home.html, You get below screen.  NB: Products used here are Dummy Product they dod not represent the Correct Categories
 ![image](https://user-images.githubusercontent.com/66998462/223324785-08746180-0f1c-4ff8-a6fc-f39408f84a7b.png)
 
-   
-   
+
+
+
+## Step 11
+In this Step we will create a sign up Page, this will be sued to Register users to Our Database.
+See below on how a User Sign Up and how we will do it.
+![image](https://user-images.githubusercontent.com/66998462/223623379-4a679033-7e97-4411-92ae-3539c42ed8f4.png)
+
+1. Start Xampp and access your Database From http://localhost/phpmyadmin
+Click on your database and create below table
+![image](https://user-images.githubusercontent.com/66998462/223620535-e806fcfa-9ba5-437d-8643-db2f880529ce.png)
+
+
+![image](https://user-images.githubusercontent.com/66998462/223620613-f00f0ce5-5cc6-41cb-9a5c-5c8a4f40542c.png)
+
+Please Refer Step 2 on how to create a table, Once created it will look something like.
+![image](https://user-images.githubusercontent.com/66998462/223620834-5be1a5df-d242-42ab-a68e-3d9caf17a39e.png)
+
+This Table will be used to store our users. NB: Please observe the table name and column names and Note them.
+
+
+
+2. We create a tamplate named signup.html, Create this File in Your templates Folder.
+Put below code inside.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+  <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+     <div class="container">
+         {% include 'navbar.html' %}
+         <section class="row">
+             <div class="col-md-4">
+                  <h3>Create Account</h3>
+                  <span style="color:green;">{{success}}</span>
+                  <span style="color:red;">{{error}}</span>
+                  <form action="/signup" method="post">
+                      <input type="text" name="username" placeholder="Your Username"
+                      class="form-control"> <br>
+
+                      <input type="email" name="email" placeholder="Your Email"
+                      class="form-control"> <br>
+
+                      <input type="tel" name="phone" placeholder="Your Phone"
+                      class="form-control"> <br>
+
+                      <input type="password" name="password1" placeholder="Your Password"
+                      class="form-control"> <br>
+
+                      <input type="password" name="password2" placeholder="Confirm Password"
+                      class="form-control"> <br><br>
+
+                      <input type="submit" value="Sign Up" class="btn btn-info">
+                  </form>
+                 <br>
+                 <a href="/signin"> Already Have an Account?, Login </a>
+             </div>
+         </section>
+     </div>
+</body>
+</html>
+```
+
+Above code has a table with the fields as per our users table. Observe the input names are same as the ones in the table(CASE SENSITIVE) i.e username, password, email, phone.
+NB: password2 is not in our table it will only be used to confirm if passwords are matching.
+
+Check <form action="/signup" method="post">   this line it points to a route named /signup we will create this route in Python to help receive the data once the form is Posted.
+
+
+3. Next we create a /signup routein our app.py.
+Put below code
+```
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    # Check if form was posted by user
+    if request.method == 'POST':
+            # Receive what was posted by user including username, password1,password2 email, phone
+            username = request.form['username']
+            email = request.form['email']
+            phone = request.form['phone']
+            password1 = request.form['password1']
+            password2 = request.form['password2']
+	    
+            # check if any of the password is less than eight x-ters and notify the user to put a password more that 8 -xters  
+            if len(password1) < 8:
+                return render_template('signup.html', error='Password must more than 8 xters')
+		
+            # Check if the 2 passwords are matching, if not notify the user to match them up.		
+            elif password1 != password2:
+                return render_template('signup.html', error='Password Do Not Match')
+            else:
+	        # Now we can save username, password, email, phone into our users table
+		# Make a connection to database
+                connection = pymysql.connect(host='localhost', user='root', password='',
+                                             database='DemoClassDB')
+		# Create an Insert SQL, Note the SQL has 4 placeholders, Real values to be provided later			     
+                sql = ''' 
+                     insert into users(username, password, phone, email) 
+                     values(%s, %s, %s, %s)
+                 '''
+		# Create a cursor to be used in Executing our SQL 
+                cursor = connection.cursor()
+		# Execute SQL, providing the real values to replace our placeholders 
+                cursor.execute(sql, (username, password1, phone, email))
+		# Commit to Save to database
+                connection.commit()
+		# Return a message to user to confirm successful registratio
+                return render_template('signup.html', success='Registered Successfully')
+
+    else:
+        # Form not posted, display the form to allow user Post something
+        return render_template('signup.html')
+```
+
+Above code is a Python route that takes data form the form and pushes to your users table.
+
+<br/>
+Now Run your App. <br/>
+Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
+Now access  http://127.0.0.1:5000/signup From your browser. <br/>
+
+
 
 End of Part 1
 
