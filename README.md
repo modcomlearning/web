@@ -636,7 +636,6 @@ When your Click on One Product From home.html, You get below screen.  NB: Produc
 
 
 
-
 ## Step 11
 In this Step we will create a sign up Page, this will be sued to Register users to Our Database.
 See below on how a User Sign Up and how we will do it.
@@ -647,16 +646,14 @@ Click on your database and create below table
 ![image](https://user-images.githubusercontent.com/66998462/223620535-e806fcfa-9ba5-437d-8643-db2f880529ce.png)
 
 
-![image](https://user-images.githubusercontent.com/66998462/223620613-f00f0ce5-5cc6-41cb-9a5c-5c8a4f40542c.png)
-
-Please Refer Step 2 on how to create a table, Once created it will look something like.
+Please Refer **Step 2** on how to create a table, Once created it will look something like.
 ![image](https://user-images.githubusercontent.com/66998462/223620834-5be1a5df-d242-42ab-a68e-3d9caf17a39e.png)
 
 This Table will be used to store our users. NB: Please observe the table name and column names and Note them.
+![image](https://user-images.githubusercontent.com/66998462/223624064-8f6303a3-ccf4-4f9e-b466-278ab20868c4.png)
 
 
-
-2. We create a tamplate named signup.html, Create this File in Your templates Folder.
+2. We create a tamplate named **signup.html**, Create this File in Your templates Folder.
 Put below code inside.
 ```
 <!DOCTYPE html>
@@ -702,13 +699,13 @@ Put below code inside.
 </html>
 ```
 
-Above code has a table with the fields as per our users table. Observe the input names are same as the ones in the table(CASE SENSITIVE) i.e username, password, email, phone.
+Above code has a table with the fields as per our users table. Observe the input names are same as the ones in the table(CASE SENSITIVE) i.e** username, password, email, phone**.
 NB: password2 is not in our table it will only be used to confirm if passwords are matching.
 
 Check <form action="/signup" method="post">   this line it points to a route named /signup we will create this route in Python to help receive the data once the form is Posted.
+<br/><br/>
 
-
-3. Next we create a /signup routein our app.py.
+3. Next we create a **/signup**  routein our  **app.py**
 Put below code
 ```
 @app.route('/signup', methods=['POST', 'GET'])
@@ -755,11 +752,19 @@ def signup():
 
 Above code is a Python route that takes data form the form and pushes to your users table.
 
-<br/>
+<br/><br/>
 Now Run your App. <br/>
 Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
 Now access  http://127.0.0.1:5000/signup From your browser. <br/>
 
+You will get below Sgn Up Form , Now you can Register a User, Enter the details and Click  **Sign Up**
+![image](https://user-images.githubusercontent.com/66998462/223623834-f65a2f85-6ef8-4d7b-a91c-72a7c81c6fc9.png)
+![image](https://user-images.githubusercontent.com/66998462/223624216-f255b32d-7f2d-45a9-9088-bfcdd5fe8413.png)
+	
+Confirm in your Database users table and see the registered USER.
+![image](https://user-images.githubusercontent.com/66998462/223624274-1f3224d8-aba5-4896-aa43-5426a0c745a2.png)
+	
+Done.
 
 
 End of Part 1
