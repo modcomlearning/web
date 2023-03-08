@@ -854,7 +854,9 @@ def signup():
     else:
         # Form not posted, display the form to allow user Post something
         return render_template('signup.html')
-    ```
+
+
+```
 
 Now Run Your and Signup , an SMS is sent to the phone number that was used in registering.
 
