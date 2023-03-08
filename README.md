@@ -858,9 +858,11 @@ def signup():
 
 ```
 
-Now Run Your and Signup , an SMS is sent to the phone number that was used in registering.
+Now Run Your and Signup , an SMS is sent to the phone number that was used in registering. 
+NB: phone number must start with +2547XXXXXXXX
 
-
+## Step 12
+TODO Login.
 
 Done.
 End of Part 1
