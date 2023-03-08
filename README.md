@@ -764,6 +764,102 @@ You will get below Sign Up Form , Now you can Register a User, Enter the details
 Confirm in your Database users table and see the registered USER.
 ![image](https://user-images.githubusercontent.com/66998462/223624274-1f3224d8-aba5-4896-aa43-5426a0c745a2.png)
 
+
+## Step 12
+In this step we send an SMS after successful registration. To send an SMS we will do with help of AfricasTalking  Gateway. For more on check https://africastalking.com/
+
+First install required packages
+Oopen Terminal in VS Code and Type this command
+```
+pip3 install africastalking
+```
+
+
+Create a File named sms.py and place this code
+```
+# sending an sms
+import africastalking
+africastalking.initialize(
+    username="joe2022",
+    api_key="aab3047eb9ccfb3973f928d4ebdead9e60beb936b4d2838f7725c9cc165f0c8a"
+    #justpaste.it/1nua8
+)
+sms = africastalking.SMS
+def send_sms(phone, message):
+    recipients = [phone]
+    sender = "AFRICASTKNG"
+    try:
+        response = sms.send(message, recipients)
+        print(response)
+    except Exception as error:
+        print("Error is ", error)
+	
+```
+
+
+In This code we use africas talking to define the access credentials(the username and api_key)Then we define a function that will accept phone and message paramaters and send an SMS to specified Mobile Number.
+
+
+Now we need to Update our /signup route done in step 11 to Send SMS after Success registration
+Here os the Updated Code For /signup route.
+NB: The only added code is below connection.commit() , below is the 2 lines to add
+```
+import sms
+send_sms(phone, "Thank you for Registering")
+```
+
+3. Next we create a  **/signup**  route in our **app.py**
+Put below code.
+```
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    # Check if form was posted by user
+    if request.method == 'POST':
+            # Receive what was posted by user including username, password1,password2 email, phone
+            username = request.form['username']
+            email = request.form['email']
+            phone = request.form['phone']
+            password1 = request.form['password1']
+            password2 = request.form['password2']
+	    
+            # check if any of the password is less than eight x-ters and notify the user to put a password more that 8 -xters  
+            if len(password1) < 8:
+                return render_template('signup.html', error='Password must more than 8 xters')
+		
+            # Check if the 2 passwords are matching, if not notify the user to match them up.		
+            elif password1 != password2:
+                return render_template('signup.html', error='Password Do Not Match')
+            else:
+	        # Now we can save username, password, email, phone into our users table
+		# Make a connection to database
+                connection = pymysql.connect(host='localhost', user='root', password='',
+                                             database='DemoClassDB')
+		# Create an Insert SQL, Note the SQL has 4 placeholders, Real values to be provided later			     
+                sql = ''' 
+                     insert into users(username, password, phone, email) 
+                     values(%s, %s, %s, %s)
+                 '''
+		# Create a cursor to be used in Executing our SQL 
+                cursor = connection.cursor()
+		# Execute SQL, providing the real values to replace our placeholders 
+                cursor.execute(sql, (username, password1, phone, email))
+		# Commit to Save to database
+                connection.commit()
+		# ADD THIS BELOW LINES
+		import sms
+		send_sms(phone, "Thank you for Registering")
+		# Return a message to user to confirm successful registration.
+                return render_template('signup.html', success='Registered Successfully')
+
+    else:
+        # Form not posted, display the form to allow user Post something
+        return render_template('signup.html')
+    ```
+
+Now Run Your and Signup , an SMS is sent to the phone number that was used in registering.
+
+
+
 Done.
 End of Part 1
 
