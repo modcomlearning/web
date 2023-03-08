@@ -653,7 +653,7 @@ This Table will be used to store our users. NB: Please observe the table name an
 ![image](https://user-images.githubusercontent.com/66998462/223624064-8f6303a3-ccf4-4f9e-b466-278ab20868c4.png)
 
 
-2. We create a tamplate named **signup.html**, Create this File in Your templates Folder.
+2. We create a tamplate named **signup.html**  Create this File in Your templates Folder.
 Put below code inside.
 ```
 <!DOCTYPE html>
@@ -699,14 +699,14 @@ Put below code inside.
 </html>
 ```
 
-Above code has a table with the fields as per our users table. Observe the input names are same as the ones in the table(CASE SENSITIVE) i.e** username, password, email, phone**.
+Above code has a table with the fields as per our users table. Observe the input names are same as the ones in the table(CASE SENSITIVE) i.e  username, password, email, phone.
 NB: password2 is not in our table it will only be used to confirm if passwords are matching.
 
 Check <form action="/signup" method="post">   this line it points to a route named /signup we will create this route in Python to help receive the data once the form is Posted.
 <br/><br/>
 
-3. Next we create a **/signup**  routein our  **app.py**
-Put below code
+3. Next we create a  **/signup**  route in our **app.py**
+Put below code.
 ```
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -742,7 +742,7 @@ def signup():
                 cursor.execute(sql, (username, password1, phone, email))
 		# Commit to Save to database
                 connection.commit()
-		# Return a message to user to confirm successful registratio
+		# Return a message to user to confirm successful registration.
                 return render_template('signup.html', success='Registered Successfully')
 
     else:
@@ -754,19 +754,17 @@ Above code is a Python route that takes data form the form and pushes to your us
 
 <br/><br/>
 Now Run your App. <br/>
-Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
+Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signup From your browser. <br/>
 
-You will get below Sgn Up Form , Now you can Register a User, Enter the details and Click  **Sign Up**
+You will get below Sign Up Form , Now you can Register a User, Enter the details and Click  **Sign Up**
 ![image](https://user-images.githubusercontent.com/66998462/223623834-f65a2f85-6ef8-4d7b-a91c-72a7c81c6fc9.png)
 ![image](https://user-images.githubusercontent.com/66998462/223624216-f255b32d-7f2d-45a9-9088-bfcdd5fe8413.png)
 	
 Confirm in your Database users table and see the registered USER.
 ![image](https://user-images.githubusercontent.com/66998462/223624274-1f3224d8-aba5-4896-aa43-5426a0c745a2.png)
-	
+
 Done.
-
-
 End of Part 1
 
 
