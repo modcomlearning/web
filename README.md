@@ -862,7 +862,70 @@ Now Run Your and Signup , an SMS is sent to the phone number that was used in re
 NB: phone number must start with +2547XXXXXXXX
 
 ## Step 12
-TODO Login.
+In this section we will do a Login, The sign Up was Done in Step 11.
+Inside templates Folder Create a Page named  signin.html and write  below code.
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
+      <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+     <div class="container">
+         {% include 'navbar.html' %}
+         <section class="row">
+             <div class="col-md-4">
+                  <h3>Login Account</h3>
+                  <span style="color:green;">{{success}}</span>
+                  <span style="color:red;">{{error}}</span>
+                  <form action="/signin" method="post">
+                      <input type="text" name="username" placeholder="Your Username"
+                      class="form-control"> <br>
+
+                      <input type="password" name="password" placeholder="Your Password"
+                      class="form-control"> <br>
+
+                      <input type="submit" value="Sign In" class="btn btn-info">
+                  </form>
+                 <br>
+                 <a href="/signup"> Don't Have an Account?, Create One </a>
+             </div>
+         </section>
+     </div>
+</body>
+</html>
+```
+
+Next Step Open app.py and write below route
+```
+@app.route('/signin', methods=['POST', 'GET'])
+def signin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        connection = pymysql.connect(host='localhost', user='root', password='',
+                                     database='DemoClassDB')
+
+        sql = '''
+           select * from users where username = %s and password = %s
+        '''
+        cursor = connection.cursor()
+        cursor.execute(sql, (username, password))
+
+        if cursor.rowcount == 0:
+            return render_template('signin.html', error='Invalid Credentials')  
+        else:
+            return redirect('/')  # redirect to Home Default route, After success Login
+    else:
+        return render_template('signin.html')
+```
+
+Lastly, Put Signin Link and SignUp Links to your navbar.html
+TEST SIGN IN... UPON SUCCESSFUL LOGIN IT SHOULD REDICRECT TO HOME. 
 
 Done.
 End of Part 1
