@@ -861,7 +861,7 @@ def signup():
 Now Run Your and Signup , an SMS is sent to the phone number that was used in registering. 
 NB: phone number must start with +2547XXXXXXXX
 
-## Step 12
+## Step 13
 In this section we will do a Login, The sign Up was Done in Step 11.
 Inside templates Folder Create a Page named  signin.html and write  below code.
 ```
@@ -924,9 +924,14 @@ def signin():
         return render_template('signin.html')
 ```
 
+	
 Lastly, Put Signin Link and SignUp Links to your navbar.html
 TEST SIGN IN... UPON SUCCESSFUL LOGIN IT SHOULD REDICRECT TO HOME. 
-
+Now Run your App. <br/>
+Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
+Now access  http://127.0.0.1:5000/signin From your browser. <br/>
+	
+	
 Done.
 End of Part 1
 
