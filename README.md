@@ -1119,7 +1119,7 @@ Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
 
-Once You sign Click on Any Product - Buy Now Button.<br/><br/>
+Once You sign in Click on Any Product - Buy Now Button.<br/><br/>
 You will see a Form requesting For a phone Number Please Your Phone Number- Must Start with +254XXXXXXXXX.
 Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
