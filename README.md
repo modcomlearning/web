@@ -930,7 +930,106 @@ TEST SIGN IN... UPON SUCCESSFUL LOGIN IT SHOULD REDICRECT TO HOME.
 Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
-	
+
+
+
+## Step 14
+In this section we will add sessions to our Web Application.
+A session is a way to store information (in variables) to be used across multiple pages.
+Why is a web session used? (Web session use case examples) To avoid storing massive amounts of information in-browser, developers use session IDs to store information server-side while enabling user privacy.  
+Seesions can be used to allow developers limit user activities by looking their session status. In this Web Applicaion we will demonstrate how session can used to users Make Payment if they have a session, without a session they can Not Make any Payment.
+
+1. Open app.py and add below code, this Line must be added at the Top below app = Flask(__name__)
+
+```
+# set secret key to secure your session/make it unique
+app.secret_key = "AW_r%@jN*HU4AW_r%@jN*HU4AW_r%@jN*HU4"
+```
+A secret key is used for protection against data tampering. It's very important that an attacker doesn't know the value of this secret key.
+Next head to the /signin route, After a successful Login we add this Code. This is the only Line you add
+```
+session['key'] = username  # link the session key with username
+```
+
+Your Complete /signin route look like this 
+```
+@app.route('/signin', methods=['POST', 'GET'])
+def signin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        connection = pymysql.connect(host='localhost', user='root', password='',
+                                     database='DemoClassDB')
+
+        sql = '''
+           select * from users where username = %s and password = %s
+        '''
+        cursor = connection.cursor()
+        cursor.execute(sql, (username, password))
+
+        if cursor.rowcount == 0:
+            return render_template('signin.html', error='Invalid Credentials')
+        else:
+	    # ADD THIS
+            session['key'] = username  # link the session key with username
+            return redirect('/')  # redirect to product Default route
+    else:
+        return render_template('signin.html')
+```
+
+Now we have stored the username in a session once a successful Login happens, This is the session Key for the Logged in user, it holds the unique username.
+Once a session created it Exists throughout all Pages, We need a Route to help us clear/Kill this session. This is usually the logout where a user clears a session.
+Write this route to Logout
+```
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/signin')
+```
+
+To Test the session. Open navbar.html You will write this Code, You can write it inside navbar-nav class.
+Here is the Code.
+```
+<!-- Here we check if session Exists -->
+{% if session['key'] %}
+         <!-- If it Exists, Show the username stored in the key, Show Logout Button, Link to Logout Route --> 
+	 <p>Logged in: {{ session['key'] }}</p>
+	 <a href="/logout">Logout</a>
+{% else %}
+        <!-- If it does Not Exists, means user has not Logged in , Give a Link to Login --> 
+ 	<a href="/signin">Not Signed in? Sign In Now</a>
+{% endif %}
+
+```
+
+Now Run your App. <br/>
+Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
+Now access  http://127.0.0.1:5000/signin From your browser. <br/>
+
+Before Login, Observe on NavBar Top Right in below image, It Indicates No Logged in User.
+![image](https://user-images.githubusercontent.com/66998462/224215628-7f4428a0-d433-4b32-9624-77ef38f0dae4.png)
+
+
+After Login It Should Indecate the Logged in User, Here i Visit http://127.0.0.1:5000/signin  and Login as joan, This is what I get. It shows That Joan is Logged in and she can Logout.
+
+![image](https://user-images.githubusercontent.com/66998462/224216601-79ef652d-718b-46f5-8a03-2f71ef4cba10.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 Done.
 End of Part 1
