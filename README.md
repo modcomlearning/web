@@ -935,9 +935,9 @@ Now access  http://127.0.0.1:5000/signin From your browser. <br/>
 
 ## Step 14
 In this section we will add sessions to our Web Application.
-A session is a way to store information (in variables) to be used across multiple pages.
-Why is a web session used? (Web session use case examples) To avoid storing massive amounts of information in-browser, developers use session IDs to store information server-side while enabling user privacy.  
-Seesions can be used to allow developers limit user activities by looking their session status. In this Web Applicaion we will demonstrate how session can used to users Make Payment if they have a session, without a session they can Not Make any Payment.
+A session is a way to store information (in variables) to be used across multiple pages.<br/>
+Why is a web session used? (Web session use case examples) To avoid storing massive amounts of information in-browser, developers use session IDs to store information server-side while enabling user privacy.  <br/><br/>
+Seesions can be used to allow developers limit user activities by looking their session status. In this Web Applicaion we will demonstrate how session can used to users Make Payment if they have a session, without a session they can Not Make any Payment.<br/><br/>
 
 1. Open app.py and add below code, this Line must be added at the Top below app = Flask(__name__)
 
