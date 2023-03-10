@@ -978,8 +978,8 @@ def signin():
         return render_template('signin.html')
 ```
 
-Now we have stored the username in a session once a successful Login happens, This is the session Key for the Logged in user, it holds the unique username.
-Once a session created it Exists throughout all Pages, We need a Route to help us clear/Kill this session. This is usually the logout where a user clears a session.
+Now we have stored the username in a session once a successful Login happens, This is the session Key for the Logged in user, it holds the unique username. <br/><br/>
+Once a session created it Exists throughout all Pages, We need a Route to help us clear/Kill this session. This is usually the logout where a user clears a session.<br/>
 Write this route to Logout
 ```
 @app.route('/logout')
@@ -1119,9 +1119,9 @@ Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
 
-Once You sign Click on Any Product - Buy Now Button.
+Once You sign Click on Any Product - Buy Now Button.<br/><br/>
 You will see a Form requesting For a phone Number Please Your Phone Number- Must Start with +254XXXXXXXXX.
-Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.
+Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
 
