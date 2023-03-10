@@ -1016,17 +1016,113 @@ After Login It Should Indecate the Logged in User, Here i Visit http://127.0.0.1
 ![image](https://user-images.githubusercontent.com/66998462/224216601-79ef652d-718b-46f5-8a03-2f71ef4cba10.png)
 
 
+## STep 15
+In this section, Now that we have the session Working, You will Buy a product and make payment. NB: User must be Logged in to make any Payment through MPESA.
 
+Go to single.html, Somewhere in this Page, Preferably before Similar Products,  write below Section.
+```
+	<section class="row">
+	  <div class="col-md-6">
+	      <!-- Check if user is Logged in-->	  
+	      {% if session['key'] %}
+	      <!-- Create a Form that has an action to mpesa route, We will create this route Next-->		  
+	      <form action="/mpesa" method="post">
+		      <!-- Bind Current product id in an Input-->	
+		  <input type="hidden" name="id" value="{{product[0]}}"
+		  class="form-control"><br>
+		      
+                  <!-- Create a Phone Number Input -->
+		  <input type="number" name="phone" placeholder="Enter Phone  2547XXXXXX"
+		   class="form-control"><br>
+                   ind the current Product Amount in an Input-->   
+		  <label for="">To Pay KES</label>
+		  <input type="number" name="amount" value="{{ product[3]}}"
+		   class="form-control" readonly><br>
 
+		  <input type="submit" value="Pay Now"
+			 class="btn btn-dark">
+	      </form>
+	      <!-- If not Logged in, user MUST Login below to see above Form-->	  
+	      {% else %}
+	      <h4>Please Sign in to make Payment!</h4>
+	      <a href="/signin" class="btn btn-dark btn-sm">Sign in Account</a>
+	      {% endif %}
+	  </div>
+	</section>
+```
+	
+	
+Next Go to app.py and create below route to trigger an MPESA STK Push on Your Phone
+```
+import requests
+import datetime
+import base64
+from requests.auth import HTTPBasicAuth
 
+@app.route('/mpesa', methods=['POST', 'GET'])
+def mpesa_payment():
+    if request.method == 'POST':
+        phone = str(request.form['phone'])
+        amount = str(request.form['amount'])
+        # GENERATING THE ACCESS TOKEN
+        # create an account on safaricom daraja
+        consumer_key = "GTWADFxIpUfDoNikNGqq1C3023evM6UH"
+        consumer_secret = "amFbAoUByPV2rM5A"
 
+        api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"  # AUTH URL
+        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
 
+        data = r.json()
+        access_token = "Bearer" + ' ' + data['access_token']
 
+        #  GETTING THE PASSWORD
+        timestamp = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
+        passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+        business_short_code = "174379"
+        data = business_short_code + passkey + timestamp
+        encoded = base64.b64encode(data.encode())
+        password = encoded.decode('utf-8')
 
+        # BODY OR PAYLOAD
+        payload = {
+            "BusinessShortCode": "174379",
+            "Password": "{}".format(password),
+            "Timestamp": "{}".format(timestamp),
+            "TransactionType": "CustomerPayBillOnline",
+            "Amount": "1",  # use 1 when testing
+            "PartyA": phone,  # change to your number
+            "PartyB": "174379",
+            "PhoneNumber": phone,
+            "CallBackURL": "https://modcom.co.ke/job/confirmation.php",
+            "AccountReference": "account",
+            "TransactionDesc": "account"
+        }
 
+        # POPULAING THE HTTP HEADER
+        headers = {
+            "Authorization": access_token,
+            "Content-Type": "application/json"
+        }
 
+        url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"  # C2B URL
 
+        response = requests.post(url, json=payload, headers=headers)
+        print(response.text)
+        return '<h3>Please Complete Payment in Your Phone and we will deliver in minutes</h3>' \
+               '<a href="/" class="btn btn-dark btn-sm">Back to Products</a>'
+```
+	
 
+ABove Code used MPESA Safaricom MPESA Integration to Make Payment, Check https://developer.safaricom.co.ke/  For more documentation.
+
+Now Run your App. <br/>
+Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
+Now access  http://127.0.0.1:5000/signin From your browser. <br/>
+
+Once You sign Click on Any Product - Buy Now Button.
+You will see a Form requesting For a phone Number Please Your Phone Number- Must Start with +254XXXXXXXXX.
+Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.
+![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
 
 
