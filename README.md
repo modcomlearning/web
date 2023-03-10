@@ -1125,9 +1125,7 @@ Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via 
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
 
-
-	
 Done.
-End of Part 1
+End
 
 
