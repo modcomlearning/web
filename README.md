@@ -1124,6 +1124,7 @@ You will see a Form requesting For a phone Number Please Your Phone Number- Must
 Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
+This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
 
 Done.
 End
