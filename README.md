@@ -1126,6 +1126,36 @@ Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via 
 
 This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
 
+
+## Step 16  - Student Assignment
+In Section you will create a Form to save a Vendor to the database, 
+Part 1: Creating a Table
+In your Database Create below table
+![image](https://user-images.githubusercontent.com/66998462/224610625-84a608e2-1068-410f-9ae1-a1e88ba627e1.png)
+
+Part 2: In Your templates Folder Create a File Named vendor.html and Write HTML Code to produce below Form.
+![image](https://user-images.githubusercontent.com/66998462/224611076-9a59d6ee-35d9-470c-8220-efd160a175e8.png)
+
+Part 3: In app.py, Create a Route named /vendor to help submit above Form to vendors table created in Part One
+Your Route should start like belew.
+```
+@app.route('/vendor', methods=['POST', 'GET'])
+def vendor():
+    if request.method == 'POST':
+	# Continue From Here
+```
+
+For refference on Above Task , Check Step 11, Sign Up.
+	
+<br/><br/>
+Once Now Run your App. <br/>
+Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
+Now access  http://127.0.0.1:5000/vendor From your browser. <br/>
+
+Enter Vendor Details In the Form and Submit.
+Check Your vendor table, The Vendor Record Should appear in the Table. 
+
+
 Done.
 End
 
