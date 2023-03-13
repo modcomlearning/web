@@ -1136,8 +1136,8 @@ In your Database Create below table
 Part 2: In Your templates Folder Create a File Named **vendor.html** and Write HTML Code to produce below Form.
 ![image](https://user-images.githubusercontent.com/66998462/224611076-9a59d6ee-35d9-470c-8220-efd160a175e8.png)
 
-Part 3: In app.py, Create a Route named /vendor to help submit above Form to vendors table created in Part One
-Your Route should start like belew.
+Part 3: In app.py, Create a Route named /vendor to help submit above Form to vendors table created in Part 1 <br/>
+Your Route should start like below.
 ```
 @app.route('/vendor', methods=['POST', 'GET'])
 def vendor():
