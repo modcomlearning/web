@@ -1137,7 +1137,9 @@ In your Database Create below table
 
 <br/>
 Part 2: In Your templates Folder Create a File Named **vendor.html** and Write HTML Code to produce below Form.
-![image](https://user-images.githubusercontent.com/66998462/224651856-6b7c8382-d67e-4793-8db3-f183ae513366.png)
+
+![image](https://user-images.githubusercontent.com/66998462/224652321-8d5a37c5-bceb-4cb9-a3f6-15b3ad7c98d5.png)
+
 
 <br/>
 Part 3: In app.py, Create a Route named /vendor to help submit above Form to vendors table created in Part 1 <br/>
