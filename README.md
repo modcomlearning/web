@@ -1131,15 +1131,18 @@ This Guide did a Complete e commerce web application that includes Routing, Temp
 In Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
 Part 1: Creating a Table
 In your Database Create below table
-![image](https://user-images.githubusercontent.com/66998462/224650539-10bb6291-783b-420a-b23b-b6923a33ae59.png)
+
+![image](https://user-images.githubusercontent.com/66998462/224652003-8060d600-1e5f-471c-962a-10b804b0511b.png)
+
 
 <br/>
 Part 2: In Your templates Folder Create a File Named **vendor.html** and Write HTML Code to produce below Form.
-![image](https://user-images.githubusercontent.com/66998462/224651588-1ee28565-f297-4ab4-aeee-584f4a569164.png)
+![image](https://user-images.githubusercontent.com/66998462/224651856-6b7c8382-d67e-4793-8db3-f183ae513366.png)
 
 <br/>
 Part 3: In app.py, Create a Route named /vendor to help submit above Form to vendors table created in Part 1 <br/>
-Your Route should start like below.
+Your Route should start like below. 
+
 ```
 @app.route('/vendor', methods=['POST', 'GET'])
 def vendor():
