@@ -2,31 +2,22 @@ import flask
 from flask import *
 
 app = Flask(__name__)
-
+print(__name__)
 # set secret key to secure your session/make it unique
 app.secret_key = "AW_r%@jN*HU4AW_r%@jN*HU4AW_r%@jN*HU4"
-print(__name__)
 # Decorate your app with features
 # http://127.0.0.1:5000/home
 
 import pymysql
-import math
 @app.route('/')
-def products():
+def home():
     # Establish a dbase connection
     connection = pymysql.connect(host='localhost', user='root', password='',
                                  database='DemoClassDB')
-    # SQL 1  - Detergents
-    sqlDetergents = "SELECT * FROM products where product_category = 'Smartphone'"
-    # Cursor - Used to run/execute above SQL
-    cursorDetergents = connection.cursor()
-    # Execute SQL
-    cursorDetergents.execute(sqlDetergents)
-    # Fetch Rows
-    detergents = cursorDetergents.fetchall()
 
-    # SQL 2  - Smartphones
-    sqlSmartphones = "SELECT * FROM products where product_category = 'x'"
+
+    # SQL 1  - Smartphones
+    sqlSmartphones = "SELECT * FROM products where product_category = 'Smartphone'"
     # Cursor - Used to run/execute above SQL
     cursorSmartphones = connection.cursor()
     # Execute SQL
@@ -34,7 +25,16 @@ def products():
     # Fetch Rows
     smartphones = cursorSmartphones.fetchall()
 
-    return render_template('products.html', detergents=detergents,
+    # SQL 2  - Detergents
+    sqlDetergents = "SELECT * FROM products where product_category = 'x'"
+    # Cursor - Used to run/execute above SQL
+    cursorDetergents = connection.cursor()
+    # Execute SQL
+    cursorDetergents.execute(sqlDetergents)
+    # Fetch Rows
+    detergents = cursorDetergents.fetchall()
+
+    return render_template('home.html', detergents=detergents,
                            smartphones=smartphones)
 
 
