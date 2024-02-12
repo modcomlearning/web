@@ -450,14 +450,14 @@ Right click inside **app.py** and the select **Run Python file in Terminal** <br
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 
-Below is the Output :crossed_fingers:
+After running, Below is the Output :crossed_fingers:
 ![image](https://user-images.githubusercontent.com/66998462/222487250-949b654f-ae05-4a09-a3d0-52da2ae3a239.png)
 
 ## Step 8b - Practice
 In this step learn how to add more Products Slider , we will improve the home route to fetch more products from different
 categories.
 Go to your home route, Refer Step 7-(3), we wrote an SQL to fetch the smartphones, we are going to add another SQL to fetch 
-another category Say 'detergents'.  Below is an improved home route. Check SQL2 Line 480 to 486.
+another category Say 'detergents'.  Below is an improved home route.
 ```
 @app.route('/')
 def home():
