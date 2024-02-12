@@ -355,7 +355,7 @@ Code.
 </html>
 ```
 
-Below we update above **home.html**,  Update code is added on Line 356. Below is the code snippet to be added.
+Below we update above **home.html**,  Update code is added on Line 351 Above. Below is the code snippet to be added.
 
    ```
     <br>
@@ -382,7 +382,11 @@ Below we update above **home.html**,  Update code is added on Line 356. Below is
    </section>
   ```
   
-  
+  ### Explanation.
+  Above we add a **slider** class to make the style for your slider, The slider is placed inside unordered List and a class '**autoWidth**' to make the slider Fit the 
+  Page width
+  Another class **overlay** , shows a buy Now Button when each product is hovered. the **Box** and **detail box** classes create a Box to place the image and the details of the 
+  product.
   
   Your Final **home.html** should look like below code;
   
@@ -450,14 +454,14 @@ Right click inside **app.py** and the select **Run Python file in Terminal** <br
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 
-Below is the Output
+After running, Below is the Output :crossed_fingers:
 ![image](https://user-images.githubusercontent.com/66998462/222487250-949b654f-ae05-4a09-a3d0-52da2ae3a239.png)
 
 ## Step 8b - Practice
 In this step learn how to add more Products Slider , we will improve the home route to fetch more products from different
 categories.
 Go to your home route, Refer Step 7-(3), we wrote an SQL to fetch the smartphones, we are going to add another SQL to fetch 
-another category Say 'detergents'.  Below is an improved home route. Check SQL2 Line 480 to 486.
+another category Say 'detergents'.  Below is an improved home route.
 ```
 @app.route('/')
 def home():
@@ -490,7 +494,7 @@ def home():
 ```
 In addtion, we now return the detergents and smartphones all together to the template, Now Lets go to **home.html** and bind detergents.
 
-Below is how we bind detergents in home.html , its basicaly similar to smartphones, we add a new section and add the specific classes the loop every item in the detergents(Line 498) variable returned.
+Below is how we bind detergents in home.html , its basicaly similar to smartphones, we add a new section and add the specific classes the loop every item in the detergents variable returned.
 ```
     <h2>Detergents</h2>
         <section class="slider p-4">
@@ -572,7 +576,7 @@ Finally, In home.html, add a footer, check below Link.
 
 Now, Your Home Page with a footer will look like below.
 ![image](https://github.com/modcomlearning/web/assets/66998462/b91e9985-0690-47cf-94e2-f35c81f1ae55)
-You're Now Done with creating Dynamic Products Sliders with Navbar, Carousel and a Footer.:muscle:
+You're Now Done with creating Dynamic Products Sliders with Navbar, Carousel and a Footer. :muscle:
 
 ## Step 9
 In this step we will create a Page which displays when a product is clicked from Home Page.  From Home.html, each product had an Overlay and a Buy Button, It looked something like, Please refer your home.html. Please check Step 8.
