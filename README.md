@@ -572,7 +572,7 @@ Finally, In home.html, add a footer, check below Link.
 
 Now, Your Home Page with a footer will look like below.
 ![image](https://github.com/modcomlearning/web/assets/66998462/b91e9985-0690-47cf-94e2-f35c81f1ae55)
-You're Now Done with creating Dynamic Products Sliders with Navbar, Carousel and a Footer.:muscle:
+You're Now Done with creating Dynamic Products Sliders with Navbar, Carousel and a Footer. :muscle:
 
 ## Step 9
 In this step we will create a Page which displays when a product is clicked from Home Page.  From Home.html, each product had an Overlay and a Buy Button, It looked something like, Please refer your home.html. Please check Step 8.
