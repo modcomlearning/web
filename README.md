@@ -298,28 +298,24 @@ Code.
    3. Fetching Records
    # Default Home route
    ```
-   import pymysql
    @app.route('/')
-   def home():
-       # Establish a database connection
-       connection = pymysql.connect(host='localhost', user='root', password='',
-                                    database='DemoClassDB')
-      ** # SQL 1  - Select Products by Smartphone Category**
-       sqlSmartphone = "SELECT * FROM products where product_category = 'Smartphone'"
-       
-       **# Cursor - Used to run/execute above SQL**
-       cursorSmartphone = connection.cursor()
-       
-      ** # Execute SQL**
-       cursorSmartphone.execute(sqlSmartphone)
-       
-      ** # Fetch Rows**
-       smartphones = cursorSmartphone.fetchall()
+def home():
+    # Establish a dbase connection
+    connection = pymysql.connect(host='localhost', user='root', password='',
+                                 database='DemoClassDB')
 
-       **# TODO SQL 2  - Smartphones**
-       
-       # Return smartphones to **home.html**
-       return render_template('home.html', smartphones=smartphones)
+
+    # SQL 1  - Smartphones
+    sql1 = "SELECT * FROM products where product_category = 'Smartphone'"
+    # Cursor - Used to run/execute above SQL
+    cursor = connection.cursor()
+    # Execute SQL
+    cursor.execute(sql1)
+    # Fetch Rows
+    smartphones = cursor.fetchall()
+
+    return render_template('home.html',
+                           smartphones=smartphones)
  
  ```
        
@@ -468,28 +464,25 @@ def home():
     # Establish a dbase connection
     connection = pymysql.connect(host='localhost', user='root', password='',
                                  database='DemoClassDB')
-  
 
     # SQL 1  - Smartphones
-    sqlSmartphones = "SELECT * FROM products where product_category = 'x'"
+    sql1 = "SELECT * FROM products where product_category = 'Smartphone'"
     # Cursor - Used to run/execute above SQL
-    cursorSmartphones = connection.cursor()
+    cursor = connection.cursor()
     # Execute SQL
-    cursorSmartphones.execute(sqlSmartphones)
+    cursor.execute(sql1)
     # Fetch Rows
-    smartphones = cursorSmartphones.fetchall()
+    smartphones = cursor.fetchall()
 
+    # SQL 2  - Detergents
+    sql2 = "SELECT * FROM products where product_category = 'x'"
 
-      # SQL 2  - Detergents
-    sqlDetergents = "SELECT * FROM products where product_category = 'Smartphone'"
-    # Cursor - Used to run/execute above SQL
-    cursorDetergents = connection.cursor()
     # Execute SQL
-    cursorDetergents.execute(sqlDetergents)
+    cursor.execute(sql2)
     # Fetch Rows
-    detergents = cursorDetergents.fetchall()
+    detergents = cursor.fetchall()
 
-    return render_template('products.html', detergents=detergents,
+    return render_template('home.html', detergents=detergents,
                            smartphones=smartphones)
 ```
 In addtion, we now return the detergents and smartphones all together to the template, Now Lets go to **home.html** and bind detergents.
