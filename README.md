@@ -355,7 +355,7 @@ Code.
 </html>
 ```
 
-Below we update above **home.html**,  Update code is added on Line 356. Below is the code snippet to be added.
+Below we update above **home.html**,  Update code is added on Line 351 Above. Below is the code snippet to be added.
 
    ```
     <br>
@@ -382,7 +382,11 @@ Below we update above **home.html**,  Update code is added on Line 356. Below is
    </section>
   ```
   
-  
+  ### Explanation.
+  Above we add a **slider** class to make the style for your slider, The slider is placed inside unordered List and a class '**autoWidth**' to make the slider Fit the 
+  Page width
+  Another class **overlay** , shows a buy Now Button when each product is hovered. the **Box** and **detail box** classes create a Box to place the image and the details of the 
+  product.
   
   Your Final **home.html** should look like below code;
   
@@ -490,7 +494,7 @@ def home():
 ```
 In addtion, we now return the detergents and smartphones all together to the template, Now Lets go to **home.html** and bind detergents.
 
-Below is how we bind detergents in home.html , its basicaly similar to smartphones, we add a new section and add the specific classes the loop every item in the detergents(Line 498) variable returned.
+Below is how we bind detergents in home.html , its basicaly similar to smartphones, we add a new section and add the specific classes the loop every item in the detergents variable returned.
 ```
     <h2>Detergents</h2>
         <section class="slider p-4">
