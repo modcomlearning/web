@@ -17,22 +17,21 @@ def home():
 
 
     # SQL 1  - Smartphones
-    sqlSmartphones = "SELECT * FROM products where product_category = 'Smartphone'"
+    sql1 = "SELECT * FROM products where product_category = 'Smartphone'"
     # Cursor - Used to run/execute above SQL
-    cursorSmartphones = connection.cursor()
+    cursor = connection.cursor()
     # Execute SQL
-    cursorSmartphones.execute(sqlSmartphones)
+    cursor.execute(sql1)
     # Fetch Rows
-    smartphones = cursorSmartphones.fetchall()
+    smartphones = cursor.fetchall()
 
     # SQL 2  - Detergents
-    sqlDetergents = "SELECT * FROM products where product_category = 'x'"
-    # Cursor - Used to run/execute above SQL
-    cursorDetergents = connection.cursor()
+    sql2 = "SELECT * FROM products where product_category = 'x'"
+
     # Execute SQL
-    cursorDetergents.execute(sqlDetergents)
+    cursor.execute(sql2)
     # Fetch Rows
-    detergents = cursorDetergents.fetchall()
+    detergents = cursor.fetchall()
 
     return render_template('home.html', detergents=detergents,
                            smartphones=smartphones)
