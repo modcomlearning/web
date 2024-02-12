@@ -450,7 +450,7 @@ Right click inside **app.py** and the select **Run Python file in Terminal** <br
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 
-Below is the Output
+Below is the Output :crossed_fingers:
 ![image](https://user-images.githubusercontent.com/66998462/222487250-949b654f-ae05-4a09-a3d0-52da2ae3a239.png)
 
 ## Step 8b - Practice
