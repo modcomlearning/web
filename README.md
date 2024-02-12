@@ -526,6 +526,50 @@ DO SQL4 and SQL5 - Practice. Always remember to add products and their categorie
 Finally, In home.html, add a footer, check below Link.
 [https://justpaste.it/dfnjn]
 
+```
+<section class="row bg-warning p-5">
+        <div class="col-md-4">
+            <h3 class="text-white">About Us</h3>
+            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, quasi.</p>
+            <p class="text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quibusdam cumque ullam 
+            aliquid ratione assumenda tempore ducimus recusandae cupiditate? Cupiditate saepe ratione vitae neque soluta 
+            repudiandae veniam quam accusantium impedit!</p>
+        </div>
+
+         <div class="col-md-4">
+            <h3 class="text-white">Contact Us</h3>
+            <form action="">
+                  <input type="email" placeholder="Enter Email" class="form-control"> <br>
+                  <textarea name="" id="" cols="5" rows="5" class="form-control" placeholder="Leave a Comment"></textarea>
+                  <br>
+                  <button class="btn btn-danger">Send Message</button>
+            </form>
+        </div>
+
+         <div class="col-md-4">
+            <h3 class="text-white">Stay Connected</h3>
+             <br>
+            <a href="">
+                <img src="images/fb.png" alt=""> 
+            </a> 
+             <a href="">
+                <img src="images/in.png" alt=""> 
+            </a> 
+
+             <a href="">
+                <img src="images/x.png" alt=""> 
+            </a> 
+            <br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam neque tenetur quam unde officiis nesciunt 
+            repellat dicta laudantium assumenda aspernatur hic consequatur labore, ducimus enim libero harum facere nihil 
+            expedita!</p>
+        </div>
+    </section>
+    <footer class="bg-dark text-center p-2">
+            <b class="text-white">Developed by X.  &copy; 2024. All Rights Reserved</b>. 
+    </footer>
+```
+
 ## Step 9
 In this step we will create a Page which displays when a product is clicked from Home Page.  From Home.html, each product had an Overlay and a Buy Button, It looked something like, Please refer your home.html. Please check Step 8.
 ```
