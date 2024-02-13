@@ -11,14 +11,10 @@
                              <a href="/" class="nav-item nav-link">Home</a>
                              <a href="/" class="nav-item nav-link">Blog</a>
                              <a href="/" class="nav-item nav-link">About US</a>
+                             <a href="/upload" class="nav-item nav-link">Upload Product</a>
                         </div>
                        <div class="ms-auto">
-                            {% if session['key'] %}
-                                 <p>Logged in: {{session['key']}}</p>
-                                 <a href="/logout">Logout</a>
-                            {% else %}
-                                 <a href="/signin">Not Signed in? Sign In Now</a>
-                            {% endif %}
+                        
                        </div>
 
                    </div>

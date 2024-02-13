@@ -9,6 +9,49 @@ app.secret_key = "AW_r%@jN*HU4AW_r%@jN*HU4AW_r%@jN*HU4"
 # http://127.0.0.1:5000/home
 
 import pymysql
+
+@app.route('/upload', methods=['POST', 'GET'])
+def upload_product():
+    # Below if works when the Form in upload.html is Submitted/Sent
+    if request.method == 'POST':
+        # Below receives all variables sent/submitted from the Form
+        product_name = request.form['product_name'] 
+        product_desc = request.form['product_desc']
+        product_cost = request.form['product_cost']
+        product_category = request.form['product_category']
+        product_image_name = request.files['product_image_name']
+        product_image_name.save('static/images/' + product_image_name.filename) # Saves the image File in images folder
+
+        # Connect to DB
+        connection = pymysql.connect(
+            host='localhost', user='root', password='', database='DemoClassDB')
+        # Create a Cursor
+        cursor = connection.cursor()
+        
+        # Prepare you data, Notice the 'product_image_name.filename' below, Gets only the image name not the File
+        data = (product_name, product_desc, product_cost,
+                product_category, product_image_name.filename)
+        # Do SQL, Be keen on columns spelling, should be same as in database
+        # %s in the SQL means placeholder to be replace by the data above.
+        sql = "insert into products (product_name, product_desc, product_cost, product_category, product_image_name) values (%s, %s, %s, %s, %s)"
+        try:
+            # Excecute SQL, parsing your data
+            cursor.execute(sql, data)
+            connection.commit() # Commit to write changes to database and render a success message to upload template
+            return render_template('upload.html', message='Product Added Successfully')
+        except:
+            # In case of an Error/Exception rollback to undo chnages and return a fail message to upload template
+            connection.rollback()
+            return render_template('upload.html', message='Failed, Try Again Later')
+
+    else:
+        # Below renders the template when a user accesses the /upload route, it shows the upload.html so that the user can input product details and POST/submit
+        return render_template('upload.html', message='Please Add Product Details')
+
+
+
+
+
 @app.route('/')
 def home():
     # Establish a dbase connection
@@ -17,7 +60,7 @@ def home():
 
 
     # SQL 1  - Smartphones
-    sql1 = "SELECT * FROM products where product_category = 'Smartphone'"
+    sql1 = "SELECT * FROM products where product_category = 'Smartphones'"
     # Cursor - Used to run/execute above SQL
     cursor = connection.cursor()
     # Execute SQL
@@ -53,9 +96,9 @@ def single_item(product_id):
     if cursor.rowcount == 0:
         return render_template('single_item.html', message='Item Not Found')
     else:
-        # Product Found, Retrieve It
-        row = cursor.fetchone()
-        return render_template('single_item.html', row=row)
+        # Product Found, Retrieve It, 1 product
+        product = cursor.fetchone()
+        return render_template('single_item.html', product=product)
 
 
 @app.route('/signup', methods=['POST', 'GET'])

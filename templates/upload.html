@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="../static/files/css/bootstrap.css">
+</head>
+<body>
+    <div class="container -fluid">
+         {% include 'navbar.html' %}
+        <br>
+        <section class="row">
+            <div class="col-md-6 ms-5">
+                <div class="card shadow p-2">
+                    <h5 class="m-2">{{message}}</h5>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <!-- Allow Upload of a non text data like images, audio -->
+                        <!-- Compulsory for the input file to upload image the server -->
+            
+                        <label> Product Name </label>
+                        <input type="text" name="product_name" class="form-control" required>
+            
+                        <label> Product Description </label>
+                        <textarea name="product_desc" cols="30" rows="3" class="form-control" required></textarea>
+            
+                        <label> Product Cost </label>
+                        <input type="number" name="product_cost" id="cost" class="form-control" required>
+            
+                        <label> Product Category </label>
+                        <select name="product_category" class="form-control">
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Utensils">Utensils</option>
+                            <option value="Smartphones">Smartphones</option>
+                            <option value="Other">Other</option>
+                        </select><br>
+            
+            
+                        <label> Product Image </label>
+                        <input type="file" name="product_image_name" class="form-control" required><br>
+            
+                        
+            
+                        <input type="submit" value="Add/Upload Product" class="btn btn-success" required><br>
+            
+                    </form>
+            
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    
+    
+</body>
+</html>
