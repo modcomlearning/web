@@ -1150,7 +1150,139 @@ Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via 
 This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
 
 
-## Step 16  - Student Assesment
+
+## Step 16.
+This step, we will create a product upload route. Consider a web application where we can upload products and sell them online, This route will aim to allow selling/uploading product to this Application.
+Please confirm that you have an **images** Folder inside your static Folder, this folder will be used to store uploaded product images. Please Note in the database we will only store the image name and the image File will be saved in images Folder!. 
+NB: Saving images in a folder and image name in the database makes the database load faster avoiding unnecessary lag/slowness.
+
+In templates create a file named upload.html and write below code. The Code includes a Form that will help us write product details as per our product table in our Dbase.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="../static/files/css/bootstrap.css">
+</head>
+<body>
+    <div class="container -fluid">
+         {% include 'navbar.html' %}
+        <br>
+        <section class="row">
+            <div class="col-md-6 ms-5">
+                <div class="card shadow p-2">
+                    <h5 class="m-2">{{message}}</h5>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <!-- Ectype - Allow Upload of a non text data like images, audio -->
+                     
+                        <label> Product Name </label>
+                        <input type="text" name="product_name" class="form-control" required>
+            
+                        <label> Product Description </label>
+                        <textarea name="product_desc" cols="30" rows="3" class="form-control" required></textarea>
+            
+                        <label> Product Cost </label>
+                        <input type="number" name="product_cost" id="cost" class="form-control" required>
+            
+                        <label> Product Category </label>
+                        <select name="product_category" class="form-control">
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Utensils">Utensils</option>
+                            <option value="Smartphones">Smartphones</option>
+                            <option value="Other">Other</option>
+                        </select><br>
+            
+            
+                        <label> Product Image </label>
+                        <input type="file" name="product_image_name" class="form-control" required><br>
+            
+
+                        <input type="submit" value="Add/Upload Product" class="btn btn-success" required><br>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+```
+
+## Explanation
+```
+ <form action="/upload" method="post" enctype="multipart/form-data">
+```
+Above Code means that on Submit the form it will navigate to **/upload** route using method **POST**
+enctype="multipart/form-data"  is an attribute that means our form will have a File to upload, in this case the image.
+
+The Form has Five inputs. product_name, product_desc, product_cost, product_category, product_image_name.
+In the Form we have a text area to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.
+
+ALso, we include a navbar.html, a section and a card.
+
+After Creating the **upload.html** Form, we now create the route that is used to Upload the image to images Folder and the other details including image_name to the database. In you app.py, write below **route** code , its the **/upload **route. 
+```
+import pymysql
+
+@app.route('/upload', methods=['POST', 'GET'])
+def upload_product():
+    # Below if works when the Form in upload.html is Submitted/Sent
+    if request.method == 'POST':
+        # Below receives all variables sent/submitted from the Form
+        product_name = request.form['product_name'] 
+        product_desc = request.form['product_desc']
+        product_cost = request.form['product_cost']
+        product_category = request.form['product_category']
+        product_image_name = request.files['product_image_name']
+        product_image_name.save('static/images/' + product_image_name.filename) # Saves the image File in images folder, in static Folder.
+
+        # Connect to DB
+        connection = pymysql.connect(
+            host='localhost', user='root', password='', database='DemoClassDB')
+        # Create a Cursor
+        cursor = connection.cursor()
+        
+        # Prepare you data, Notice the 'product_image_name.filename' below, Gets only the image name not the File
+        data = (product_name, product_desc, product_cost,
+                product_category, product_image_name.filename)
+        # Do SQL, Be keen on columns spelling, should be same as in database
+        # %s in the SQL means placeholder to be replace by the data above.
+        sql = "insert into products (product_name, product_desc, product_cost, product_category, product_image_name) values (%s, %s, %s, %s, %s)"
+        try:
+            # Excecute SQL, parsing your data
+            cursor.execute(sql, data)
+            connection.commit() # Commit to write changes to database and render a success message to upload template
+            return render_template('upload.html', message='Product Added Successfully')
+        except:
+            # In case of an Error/Exception rollback to undo chnages and return a fail message to upload template
+            connection.rollback()
+            return render_template('upload.html', message='Failed, Try Again Later')
+
+    else:
+        # Below renders the template when a user accesses the /upload route, it shows the upload.html so that the user can input product details and POST/submit
+        return render_template('upload.html', message='Please Add Product Details')
+```
+## Explanation
+Above code is used to receive details from the Uploads Form and save them to the database (product table).
+Run Your App and Navigate to upload route.
+[http://127.0.0.1:5000/upload] , You can add a Link to **/upload** in your Navba, For quick access to the route.
+Below is the Output, Fill the product details and upload the Image and Submit, Confirm that the image file goes to **static/images** Folder, and other details including image name are saved in **products** table in your DBase. Below is a Test of Uploading a Nokia Phone, After Filling the Form Clcik submit and Success Message is shown at the Top of the Form.
+![image](https://github.com/modcomlearning/web/assets/66998462/28d270e1-5a38-4510-8e8c-f466c500588a)
+
+We do Confirm the Nokia Product is saved in the Database, all details including image name nokia1.jpg are seen in below screenshot.
+![image](https://github.com/modcomlearning/web/assets/66998462/08e7f506-f3c3-40e3-abf2-93249eee5dfe)
+
+And the image File is present in **static/images** Folder.
+![image](https://github.com/modcomlearning/web/assets/66998462/8980eb25-16cd-4c39-b9d8-c8aa4e8ef6d9)
+Done!. :thumbsup: 
+Please several products in different categories.
+
+
+## Step 17  - Student Assesment
 In Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
 Part 1: Creating a Table
 In your Database Create below table
