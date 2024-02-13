@@ -654,100 +654,12 @@ When You Click on One Product  - Buy Now
 ![image](https://user-images.githubusercontent.com/66998462/223324142-4ba6f95a-b149-4abe-b0fa-af1c6821f674.png)
 
 
-## Step 10, This is an Optional Step But It can be done to provide More similar Product to the product displayed in Image above.
-We Update the code to also select similar products based on Current product Category.
-Update your route to retrieve similar products your **/single** route Looks like below
-```
-# Get Single Item
-@app.route('/single/<product_id>')
-def single(product_id):
-    # Establish a dbase connection
-    connection = pymysql.connect(host='localhost', user='root', password='',
-                                 database='DemoClassDB')
-    # SQL  - %s is a placeholder
-    sql1 = "SELECT * FROM products WHERE product_id = %s"
-
-    # Cursor - Used to run/execute above SQL
-    cursor1 = connection.cursor()
-
-    # Execute SQL providing product_id - NB: sql had a placeholder
-    cursor1.execute(sql1, (product_id))
-
-    # Get the product retrieved, Please this is one Product. 
-    product = cursor1.fetchone()
-
-
-    # At this Point, we have a product, We can retrieve product category like
-    category = product[4]  # Category is at colm 4
-
-    # We now query to Find Others Product in this category, We LImit to only 4
-    # ADD THIS
-    sql2 = "select * from products where product_category = %s LIMIT 4"
-    cursor2 = connection.cursor()
-    cursor2.execute(sql2, (category))
-    similar = cursor2.fetchall()
-    # Now we have similar products
-
-    # We now return the Product and similar Products 
-    return render_template('single.html', product=product, similar = similar)
-   ```
-   
-Your **single.html** should be updated to Look as below. We Bind similar products
-   
-   ```
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Products</title>
-     <link href="../static/files/css/bootstrap.min.css" rel="stylesheet">
-      <script src="../static/files/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-     <div class="container-fluid">
-         {% include 'navbar.html' %}
-          <section class="row">
-               <div class="col-md-4">
-                      <img src="../static/photos/{{product[5]}}" alt="" width="300" height="300"
-                      class="img-thumbnail shadow p-4"><br><br>
-                      <h3>{{ product[1] }}</h3>
-               </div>
-
-              <div class="col-md-8">
-                     <p class="text-muted">{{ product[2] }}</p>
-                     <h4>KES {{ product[3] }}</h4>
-                     <b class="text-danger">Category: {{ product[4] }}</b> <br><br>
-              </div>
-              </section>
-              <br><br>
-	      
-              <!-- ADD THIS CODE  -->
-              <h4>More Like This</h4>
-               <section class="row">
-              {%  for item in similar  %}
-                   <div class="col-md-3">
-                       <img src="../static/photos/{{item[5]}}" alt="" width="200" height="200">
-                       <br>
-                       <b>{{item[1]}}</b> <br>
-                       <p class="text-muted">KES {{item[3]}}</p>
-            
-        
-                       <a href="/single/{{item[0]}}" class="btn btn-warning">Buy Now</a>
-                       <br><br>
-                   </div>
-             {% endfor %}
-       </section>
-     </div>
-</body>
-</html>
-```
-
 <br/>
 Now Run your App. <br/>
 Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
-When your Click on One Product From home.html, You get below screen.  NB: Products used here are Dummy Product they dod not represent the Correct Categories
+When your Click on One Product From home.html, You get below screen.  NB: Products used here are Dummy Product they did not represent the Correct Categories
 ![image](https://user-images.githubusercontent.com/66998462/223324785-08746180-0f1c-4ff8-a6fc-f39408f84a7b.png)
 
 
