@@ -1212,19 +1212,19 @@ In templates create a file named upload.html and write below code. The Code incl
 </body>
 </html>
 ```
+![image](https://github.com/modcomlearning/web/assets/66998462/24c4bb82-072c-47ce-b36a-f84fd7101647)
 
 ## Explanation
 ```
  <form action="/upload" method="post" enctype="multipart/form-data">
 ```
-Above Code means that on Submit the form it will navigate to **/upload** route using method **POST** <br/>
+Above code means that on **Submit** the form,  will navigate to **/upload** route using method **POST** <br/>
 enctype="multipart/form-data"  is an attribute that means our form will have a File to upload, in this case the image. <br/><br/>
-
+First in the form, we include a navbar.html, a section and a card.
 The Form has Five inputs. product_name, product_desc, product_cost, product_category, product_image_name.<br/>
-In the Form we have a text area to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.<br/>
+It also includes, a textarea to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.<br/>
 <br/>
-Also, we include a navbar.html, a section and a card.
-<br/>
+
 After Creating the **upload.html** Form, we now create the route that is used to Upload the image to images Folder and the other details including image_name to the database. In you app.py, write below **route** code , its the **/upload **route. 
 ```
 # pymysql is python package to help/aid in database connection. 
