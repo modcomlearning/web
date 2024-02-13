@@ -1152,11 +1152,12 @@ This Guide did a Complete e commerce web application that includes Routing, Temp
 
 
 ## Step 16.
-This step, we will create a product upload route. Consider a web application where we can upload products and sell them online, This route will aim to allow selling/uploading product to this Application.
-Please confirm that you have an **images** Folder inside your static Folder, this folder will be used to store uploaded product images. Please Note in the database we will only store the image name and the image File will be saved in images Folder!. 
+This step, we will create a product upload route. <br/> Consider a web application where we can upload products and sell them online, This route will aim to allow selling/uploading product to this Application.<br/>
+Please confirm that you have an **images** Folder inside your static Folder, this folder will be used to store uploaded product images. <br/>
+Please Note in the database we will only store the image name and image File will be saved in **images** Folder!. 
 NB: Saving images in a folder and image name in the database makes the database load faster avoiding unnecessary lag/slowness.
-
-In templates create a file named upload.html and write below code. The Code includes a Form that will help us write product details as per our product table in our Dbase.
+<br/>
+In templates create a file named upload.html and write below code. The Code includes a Form that will help us write product details in our Dbaseas per our product table.<br/>
 
 ```
 <!DOCTYPE html>
@@ -1222,7 +1223,7 @@ enctype="multipart/form-data"  is an attribute that means our form will have a F
 The Form has Five inputs. product_name, product_desc, product_cost, product_category, product_image_name.<br/>
 In the Form we have a text area to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.<br/>
 <br/>
-ALso, we include a navbar.html, a section and a card.
+Also, we include a navbar.html, a section and a card.
 <br/>
 After Creating the **upload.html** Form, we now create the route that is used to Upload the image to images Folder and the other details including image_name to the database. In you app.py, write below **route** code , its the **/upload **route. 
 ```
