@@ -1216,16 +1216,17 @@ In templates create a file named upload.html and write below code. The Code incl
 ```
  <form action="/upload" method="post" enctype="multipart/form-data">
 ```
-Above Code means that on Submit the form it will navigate to **/upload** route using method **POST**
-enctype="multipart/form-data"  is an attribute that means our form will have a File to upload, in this case the image.
+Above Code means that on Submit the form it will navigate to **/upload** route using method **POST** <br/>
+enctype="multipart/form-data"  is an attribute that means our form will have a File to upload, in this case the image. <br/><br/>
 
-The Form has Five inputs. product_name, product_desc, product_cost, product_category, product_image_name.
-In the Form we have a text area to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.
-
+The Form has Five inputs. product_name, product_desc, product_cost, product_category, product_image_name.<br/>
+In the Form we have a text area to upload long description and a Select option for the Category Drop Down, Other inputs and a Submit Button.<br/>
+<br/>
 ALso, we include a navbar.html, a section and a card.
-
+<br/>
 After Creating the **upload.html** Form, we now create the route that is used to Upload the image to images Folder and the other details including image_name to the database. In you app.py, write below **route** code , its the **/upload **route. 
 ```
+# pymysql is python package to help/aid in database connection. 
 import pymysql
 
 @app.route('/upload', methods=['POST', 'GET'])
@@ -1267,12 +1268,12 @@ def upload_product():
         return render_template('upload.html', message='Please Add Product Details')
 ```
 ## Explanation
-Above code is used to receive details from the Uploads Form and save them to the database (product table).
-Run Your App and Navigate to upload route.
-[http://127.0.0.1:5000/upload] , You can add a Link to **/upload** in your Navba, For quick access to the route.
-Below is the Output, Fill the product details and upload the Image and Submit, Confirm that the image file goes to **static/images** Folder, and other details including image name are saved in **products** table in your DBase. Below is a Test of Uploading a Nokia Phone, After Filling the Form Clcik submit and Success Message is shown at the Top of the Form.
+Above code is used to receive details from the Uploads Form and save them to the database (product table).<br/>
+Run Your App and Navigate to upload route.<br/>
+[http://127.0.0.1:5000/upload] , You can add a Link to **/upload** in your Navba, For quick access to the route.<br/>
+Below is the Output, Fill the product details and upload the Image and Submit, Confirm that the image file goes to **static/images** Folder, and other details including image name are saved in **products** table in your DBase. <br/> Below is a Test of Uploading a Nokia Phone, After Filling the Form Clcik submit and Success Message is shown at the Top of the Form.
 ![image](https://github.com/modcomlearning/web/assets/66998462/28d270e1-5a38-4510-8e8c-f466c500588a)
-
+<br/>
 We do Confirm the Nokia Product is saved in the Database, all details including image name nokia1.jpg are seen in below screenshot.
 ![image](https://github.com/modcomlearning/web/assets/66998462/08e7f506-f3c3-40e3-abf2-93249eee5dfe)
 
