@@ -1281,7 +1281,7 @@ We do Confirm the Nokia Product is saved in the Database, all details including 
 And the image File is present in **static/images** Folder.
 ![image](https://github.com/modcomlearning/web/assets/66998462/8980eb25-16cd-4c39-b9d8-c8aa4e8ef6d9)
 Done!. :thumbsup: 
-Please several products in different categories.
+Please add/upload several products in different categories using **/upload** route
 
 
 ## Step 17  - Student Assesment
