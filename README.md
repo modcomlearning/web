@@ -306,7 +306,7 @@ def home():
 
 
     # SQL 1  - Smartphones
-    sql1 = "SELECT * FROM products where product_category = 'Smartphone'"
+    sql1 = "SELECT * FROM products where product_category = 'Smartphones'"
     # Cursor - Used to run/execute above SQL
     cursor = connection.cursor()
     # Execute SQL
@@ -316,7 +316,8 @@ def home():
 
     return render_template('home.html',
                            smartphones=smartphones)
- 
+    # above we return the smartphones in the home.html templates.
+    # also make sure you upload products of Smartphones Category, use /upload route created in Step 16.
  ```
        
    ## Step 8
@@ -351,25 +352,27 @@ def home():
 </html>
 ```
 
-Below we update above **home.html**,  Update code is added on Line 351 Above. Below is the code snippet to be added.
+Below we update above **home.html**,  Update code is added on Line 347 Above. Below is the code snippet to be added.
 
    ```
     <br>
      <section class="slider p-4">
     <ul  class="cs-hidden autoWidth">
-    
-     {% for smartphone in smartphones %}
+     <!-- We store each smartphone in item variable (We had many smartphones), The Loop below goes through all smartphones) -->
+     <!-- For every smartphone item we index from 1 - 5, to access its details  i.e {{ item[5]}}  represent product image name, {{ item[1]}}  is product name . etc-->
+     {% for item in smartphones %}
        <li>
          <div class="box">
              <div class="slide-img">
-             <img src="../static/images/{{ smartphone[5]}}"  width="50" height="50">
+             <!-- Below we access the image name  {{ item[5]}}  and find it in images Folder, where we uploaded our images. Recall /uploads route-->
+             <img src="../static/images/{{ item[5]}}"  width="50" height="50">
              <div class="overlay">
-                 <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+                 <a href="/single_item/{{ item[0]}}" class="buy-btn">Buy Now</a>
              </div>
              </div>
              <div class="detail-box">
-                 {{smartphone[1]}}<br>
-                 <b class="text-warning">KES {{smartphone[3]}}</b>
+                 {{item[1]}}<br>
+                 <b class="text-warning">KES {{item[3]}}</b>
              </div>
              </div>
          </li>
@@ -381,8 +384,8 @@ Below we update above **home.html**,  Update code is added on Line 351 Above. Be
   ### Explanation.
   Above we add a **slider** class to make the style for your slider, The slider is placed inside unordered List and a class '**autoWidth**' to make the slider Fit the 
   Page width
-  Another class **overlay** , shows a buy Now Button when each product is hovered. the **Box** and **detail box** classes create a Box to place the image and the details of the 
-  product.
+  Another class **overlay** , shows a buy Now Button when each product is hovered. the **Box** and **detail box** classes create a Box to place the image and the 
+  details of the product.
   
   Your Final **home.html** should look like below code;
   
@@ -410,22 +413,23 @@ Below we update above **home.html**,  Update code is added on Line 351 Above. Be
           <br>
            <section class="slider p-4">
 	    <ul  class="cs-hidden autoWidth">
-	        <!-- Below we loop through each smartphone retrieved. -->
-		{% for smartphone in smartphones %}
+	        <!-- Below we loop through each smartphone retrieved. We consider each smartphone as an item, we also use indexing to access specific item details like 
+                cost , name etc -->
+		{% for item in smartphones %}
 		  <li>
 		    <div class="box">
 			<div class="slide-img">
 			<!-- Below we place the image in the image tag -->
-			<img src="../static/photos/{{ smartphone[5]}}"  width="50" height="50">
+			<img src="../static/images/{{ item[5]}}"  width="50" height="50">
 			<div class="overlay">
 			    <!-- This is a Link to Buy Now, The route on href will be used Later in Next Steps -->
-			    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+			    <a href="/single_item/{{ item[0]}}" class="buy-btn">Buy Now</a>
 			</div>
 			</div>
 			<div class="detail-box">
 			    <!-- Below we provide the product name and Cost. -->
-			    {{smartphone[1]}}<br>
-			    <b class="text-warning">KES {{smartphone[3]}}</b>
+			    {{item[1]}}<br>
+			    <b class="text-warning">KES {{item[3]}}</b>
 			</div>
 			</div>
 		    </li>
@@ -437,13 +441,7 @@ Below we update above **home.html**,  Update code is added on Line 351 Above. Be
 </body>
 </html>
 ```
-
-
-
-Finally we need to upload the images to static Folder, FInd the images on below link<br/>
-http://coding.co.ke/files/    Extract photos.zip and Paste the photos Folder in your static Folder <br/>
-NB: The images names must be the same withs once inserted in the database on **Step 2 Earlier **
-
+As we Run the code, we need to make sure we have products with Category 'Smartphones', Use the **/upload** route to upload products.
 <br/>
 Now Run your App. <br/>
 Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
@@ -572,15 +570,15 @@ Now, Your Home Page with a footer will look like below.
 You're Now Done with creating Dynamic Products Sliders with Navbar, Carousel and a Footer. :muscle:
 
 ## Step 9
-In this step we will create a Page which displays when a product is clicked from Home Page.  From Home.html, each product had an Overlay and a Buy Button, It looked something like, Please refer your home.html. Please check Step 8.
+In this step we will create a Page which displays when a product is clicked from Home Page.  From **Home.html**, each product had an Overlay and a **BUY** Button, It looked something like below code, Please refer your home.html. Please check Step 8.
 ```
 <div class="overlay">
     <!-- This is a Link to Buy Now, The route on href will be used Later in Next Steps -->
-    <a href="/single_item/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>
+    <a href="/single_item/{{ item[0]}}" class="buy-btn">Buy Now</a>
 </div>
 ```
-We need to provide a route in href = "", <a href="/single/{{ smartphone[0]}}" class="buy-btn">Buy Now</a>, passing along the product ID. Here i use 
-{{ smartphone[0]}} since i used it in Step 8.  This means when you click on Buy Now it Navigates to /single route.
+We need to provide a route in href = "", <a href="/single/{{ item[0]}}" class="buy-btn">Buy Now</a>, passing along the product ID. Here we use 
+{{ item[0]}} since i used it in **Step 8**.  This means when you click on Buy Now it Navigates to **/single_item** route.
 
 
 Below we create a route named **/single**. Open **app.py** and create below route.
@@ -626,8 +624,10 @@ Then in **templates Folder** Create a Page named single.html and place Below Cod
          {% include 'navbar.html' %}
           <section class="row">
                <div class="col-md-4">
-	       <!-- Product variable holds the Current Product , This comes from /single route in app.py  -->
-                      <img src="../static/photos/{{product[5]}}" alt="" width="300" height="300"
+	       <!-- product variable holds the Current Product, This comes from /single_item route in app.py  -->
+               <!-- product variable is indexed from 0  - 5  to access specific product details
+               product[1] is product name, product[5] represent product image etc..  -->
+                      <img src="../static/images/{{product[5]}}" alt="" width="300" height="300"
                       class="img-thumbnail shadow p-4"><br><br>
                       <h3>{{ product[1] }}</h3>
                </div>
@@ -652,15 +652,6 @@ Output
 
 When You Click on One Product - i.e Nokia   - Buy Now, You see a single Item Display.
 ![image](https://github.com/modcomlearning/web/assets/66998462/17f28861-7536-4f83-9cb4-00b422e7b2fd)
-
-<br/>
-Now Run your App. <br/>
-Right click inside **app.py** and the select **Run Python file in Terminal** <br/>
-Now access  http://127.0.0.1:5000/ From your browser. <br/>
-
-When your Click on One Product From home.html, You get below screen.  NB: Products used here are Dummy Product they did not represent the Correct Categories
-![image](https://user-images.githubusercontent.com/66998462/223324785-08746180-0f1c-4ff8-a6fc-f39408f84a7b.png)
-
 
 
 ## Step 11
@@ -1046,7 +1037,7 @@ After Login It Should Indecate the Logged in User, Here i Visit http://127.0.0.1
 ## STep 15
 In this section, Now that we have the session Working, You will Buy a product and make payment. NB: User must be Logged in to make any Payment through MPESA.
 
-Go to single.html, Somewhere in this Page, Preferably before Similar Products,  write below Section.
+Go to **single_item.html**, Somewhere in this Page, Preferably after the section with product details,  write below Section.
 ```
 	<section class="row">
 	  <div class="col-md-6">
@@ -1058,11 +1049,13 @@ Go to single.html, Somewhere in this Page, Preferably before Similar Products,  
 		  <input type="hidden" name="id" value="{{product[0]}}"
 		  class="form-control"><br>
 		      
-                  <!-- Create a Phone Number Input -->
+                  <!-- Create a Phone Number Input - User will Enter the Phone number to send STK Push to;  -->
 		  <input type="number" name="phone" placeholder="Enter Phone  2547XXXXXX"
 		   class="form-control"><br>
                    ind the current Product Amount in an Input-->   
 		  <label for="">To Pay KES</label>
+                  <!-- Here, we bind current product_cost in the Cost Input, meaning users will not type the amount, its automatically put/binded, its readonly you 
+                  can't change it-->
 		  <input type="number" name="amount" value="{{ product[3]}}"
 		   class="form-control" readonly><br>
 
@@ -1079,7 +1072,7 @@ Go to single.html, Somewhere in this Page, Preferably before Similar Products,  
 ```
 	
 	
-Next Go to app.py and create below route to trigger an MPESA STK Push on Your Phone
+Next Go to **app.py** and create below route to trigger an MPESA STK Push on Your Phone
 ```
 import requests
 import datetime
