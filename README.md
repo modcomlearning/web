@@ -648,11 +648,10 @@ Right click inside **app.py** and the select **Run Python file in Terminal** <br
 Now access  http://127.0.0.1:5000/ From your browser. <br/>
 
 Output
-![image](https://user-images.githubusercontent.com/66998462/223324265-0ff6948a-dcfb-47a1-83c3-7f48e72de067.png)
+![image](https://github.com/modcomlearning/web/assets/66998462/8bc742c4-d0be-43b6-89e2-00f0e424ab41)
 
-When You Click on One Product  - Buy Now
-![image](https://user-images.githubusercontent.com/66998462/223324142-4ba6f95a-b149-4abe-b0fa-af1c6821f674.png)
-
+When You Click on One Product - i.e Nokia   - Buy Now, You see a single Item Display.
+![image](https://github.com/modcomlearning/web/assets/66998462/17f28861-7536-4f83-9cb4-00b422e7b2fd)
 
 <br/>
 Now Run your App. <br/>
