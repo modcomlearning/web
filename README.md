@@ -1046,8 +1046,8 @@ TEST SIGN IN... UPON SUCCESSFUL LOGIN IT SHOULD REDICRECT TO HOME.
 Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
-
-
+Below is Sign up Page/Route
+![image](https://github.com/modcomlearning/web/assets/66998462/8700088e-7a18-4464-aeb8-c69871993977)
 
 ## Step 14
 In this section we will add sessions to our Web Application.
@@ -1235,9 +1235,12 @@ Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
 
-Once You sign in Click on Any Product - Buy Now Button.<br/><br/>
-You will see a Form requesting For a phone Number Please Your Phone Number- Must Start with +254XXXXXXXXX.
+Once You sign in Click on Any Product(Costing 1 or 2 Shillings For Testing purposes) - Buy Now Button.<br/><br/> The SIngle Item will show a Form to input Phone Number. <br>
+![image](https://github.com/modcomlearning/web/assets/66998462/3aa1b004-2851-4c7f-a66f-694872c9108e)
+
+You will see a Form requesting For a phone Number Please Your Phone Number - :point_up_2: - Must Start with +254XXXXXXXXX.
 Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
+
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
 This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
