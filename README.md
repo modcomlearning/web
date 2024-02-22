@@ -1077,6 +1077,7 @@ NB: You need to install requests if not already installed. use below command to 
 ```
 
 Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA. <br>
+<br>
 Create a File named **mpesa.py**, and place below code inside.
 
 ```
