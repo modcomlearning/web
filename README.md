@@ -1320,7 +1320,7 @@ Please add/upload several products in different categories using **/upload** rou
 This Guide did a Complete e commerce web application known as Soko Garden that includes Routing, Templates, Static Files, Images, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Payment Integration - Lipa Na MPESA etc. You can use this project in coming up with your Final project Later in this Program. <br>
 
 ## Step 17  - Student Assesment
-In Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
+In this Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
 Part 1: Creating a Table
 In your Database Create below table
 
