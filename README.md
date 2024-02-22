@@ -1,4 +1,4 @@
-####  E-COM
+####  E-COM  - SokoGarden
 ##### This is an application that allow customers to sign up, sign in, view products and purchase products using LIpa na MPESA, Both the Frontend and Backend will be incorporated. The Application is inspired by Online Shopping that are on the rise, such as Jumia, Kilimall etc.
 ##### This is the Guide in Building the Full Application. 
 ### Requirements
@@ -1160,7 +1160,7 @@ def payment():
     mpesa.stk_push(phone, amount)
     # SHow user below message.
     return '<h3>Please Complete Payment in Your Phone and we will deliver in minutes</h3>' \
-    '<a href='' class="btn btn-dark btn-sm">Back to Products</a>'
+    '<a href='/' class="btn btn-dark btn-sm">Back to Products</a>'
 ```
 	
 
