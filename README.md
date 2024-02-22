@@ -1182,9 +1182,6 @@ Hope you received an STK on your Phone  <br>
 :thumbsup:  :muscle:  <br>
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
-This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
-
-
 
 ## Step 16.
 This step, we will create a product upload route. <br/> Consider a web application where we can upload products and sell them online, This route will aim to allow selling/uploading product to this Application.<br/>
@@ -1318,6 +1315,9 @@ And the image File is present in **static/images** Folder.
 Done!. :thumbsup: 
 Please add/upload several products in different categories using **/upload** route
 
+
+<b>DONE</b> <br>
+This Guide did a Complete e commerce web application known as Soko Garden that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Payment Integration - Lipa Na MPESA etc. You can use this project in coming with your Final project Later in this Program. <br>
 
 ## Step 17  - Student Assesment
 In Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
