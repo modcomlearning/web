@@ -1176,7 +1176,7 @@ Once You sign in Click on Any Product(Costing 1 or 2 Shillings For Testing purpo
 <br> 
 ![image](https://github.com/modcomlearning/web/assets/66998462/3aa1b004-2851-4c7f-a66f-694872c9108e)
 
-You will see a Form requesting For a phone Number Please Your Phone Number - :point_up_2: - Must Start with +254XXXXXXXXX.
+You will see a Form requesting For a phone Number Please Your Phone Number - :point_up_2: - Must Start with 254XXXXXXXXX.
 Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
 Hope you received an STK on your Phone  <br>
 :thumbsup:  :muscle:  <br>
@@ -1319,7 +1319,7 @@ Please add/upload several products in different categories using **/upload** rou
 <b>DONE</b> <br>
 This Guide did a Complete e commerce web application known as Soko Garden that includes Routing, Templates, Static Files, Images, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Payment Integration - Lipa Na MPESA etc. You can use this project in coming up with your Final project Later in this Program. <br>
 <br>
-Hope you liked SokoGarden Project, You can Now Buy me a Coffee :coffee: :clap: <br/>
+Hope you liked SokoGarden Project, Buy me a Coffee :coffee: :clap: <br/>
 Follow us on twitter @ModcomKenya
 
 <!--
