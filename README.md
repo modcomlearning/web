@@ -1044,7 +1044,7 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 	      <!-- Check if user is Logged in-->	  
 	      {% if session['key'] %}
 	      <!-- Create a Form that has an action to mpesa route, We will create this route Next-->		  
-	      <form action="/payment" method="post">
+	      <form action="/mpesa" method="post">
 
                   <!-- Create a Phone Number Input - User will Enter the Phone number to send STK Push to;  -->
 		  <input type="number" name="phone" placeholder="Enter Phone  2547XXXXXX"
@@ -1068,8 +1068,8 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 	  </div>
 	</section>
 ```
-	
-
+<br>
+ABove we action our form to /mpesa route to be created in Next steps<br>
 NB: You need to install requests if not already installed. use below command to install <br>
 Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA.
 ```
