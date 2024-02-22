@@ -1071,12 +1071,14 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 <br>
 Above we action our form to /mpesa route to be created in Next steps<br>
 NB: You need to install requests if not already installed. use below command to install <br>
+
 ```
   pip3 install requests
 ```
-Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA.
-<br><br>
+
+Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA. <br>
 Create a File named **mpesa.py**, and place below code inside.
+
 ```
 import requests
 import datetime
