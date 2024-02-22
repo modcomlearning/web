@@ -1320,7 +1320,7 @@ Please add/upload several products in different categories using **/upload** rou
 This Guide did a Complete e commerce web application known as Soko Garden that includes Routing, Templates, Static Files, Images, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Payment Integration - Lipa Na MPESA etc. You can use this project in coming up with your Final project Later in this Program. <br>
 <br>
 If you liked SokoGarden Project Please Buy me a Coffee :coffee:<br/>
-Follow us on twitter [@ModcomKenya]
+Follow us on twitter @ModcomKenya
 
 <!--
 ## Step 17  - Student Assesment
