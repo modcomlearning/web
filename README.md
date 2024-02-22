@@ -1034,7 +1034,7 @@ After Login It Should Indecate the Logged in User, Here i Visit http://127.0.0.1
 ![image](https://user-images.githubusercontent.com/66998462/224216601-79ef652d-718b-46f5-8a03-2f71ef4cba10.png)
 
 
-## STep 15
+## Step 15
 In this section, Now that we have the session Working, You will Buy a product and make payment. NB: User must be Logged in to make any Payment through MPESA.
 
 Go to **single_item.html**, Somewhere in this Page, Preferably after the section with product details,  write below Section.
@@ -1044,17 +1044,15 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 	      <!-- Check if user is Logged in-->	  
 	      {% if session['key'] %}
 	      <!-- Create a Form that has an action to mpesa route, We will create this route Next-->		  
-	      <form action="/mpesa" method="post">
-		      <!-- Bind Current product id in an Input-->	
-		  <input type="hidden" name="id" value="{{product[0]}}"
-		  class="form-control"><br>
-		      
+	      <form action="/payment" method="post">
+
                   <!-- Create a Phone Number Input - User will Enter the Phone number to send STK Push to;  -->
 		  <input type="number" name="phone" placeholder="Enter Phone  2547XXXXXX"
 		   class="form-control"><br>
                    ind the current Product Amount in an Input-->   
 		  <label for="">To Pay KES</label>
-                  <!-- Here, we bind current product_cost in the Cost Input, meaning users will not type the amount, its automatically put/binded, its readonly you 
+                  <!-- Here, we bind current product_cost in the Cost Input, meaning users will not type the amount,
+                   its automatically put/binded, its readonly you 
                   can't change it-->
 		  <input type="number" name="amount" value="{{ product[3]}}"
 		   class="form-control" readonly><br>
@@ -1071,69 +1069,101 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 	</section>
 ```
 	
-	
-Next Go to **app.py** and create below route to trigger an MPESA STK Push on Your Phone
+
+NB: You need to install requests if not already installed. use below command to install
+Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA.
+```
+  pip3 install requests
+```
+
+Create a File named **mpesa.py**, and place below code inside.
 ```
 import requests
 import datetime
 import base64
 from requests.auth import HTTPBasicAuth
 
-@app.route('/mpesa', methods=['POST', 'GET'])
-def mpesa_payment():
-    if request.method == 'POST':
-        phone = str(request.form['phone'])
-        amount = str(request.form['amount'])
-        # GENERATING THE ACCESS TOKEN
-        # create an account on safaricom daraja
-        consumer_key = "GTWADFxIpUfDoNikNGqq1C3023evM6UH"
-        consumer_secret = "amFbAoUByPV2rM5A"
+def stk_push(phone, amount):
+    # GENERATING THE ACCESS TOKEN
+    # create an account on safaricom daraja, here you are provided with below Credentials (Consumer Key and Secret Key)
+    # For testing Purposes we use MODCOM Credentials
+    consumer_key = "GTWADFxIpUfDoNikNGqq1C3023evM6UH"
+    consumer_secret = "amFbAoUByPV2rM5A"
 
-        api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"  # AUTH URL
-        r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+    # Pass Consumer and Secret Key to Mpesa URL
+    api_URL = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials" # AUTH URL
+    data = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret)).json()
 
-        data = r.json()
-        access_token = "Bearer" + ' ' + data['access_token']
+    # We get access token from data above - To be used Later
+    access_token = data['access_token']
 
-        #  GETTING THE PASSWORD
-        timestamp = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
-        passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
-        business_short_code = "174379"
-        data = business_short_code + passkey + timestamp
-        encoded = base64.b64encode(data.encode())
-        password = encoded.decode('utf-8')
+    # GETTING THE PASSWORD
+    timestamp = datetime.datetime.today().strftime('%Y%m%d%H%M%S')
+    passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+    business_short_code = "174379"
+    # Combine the above 3 variables into single variable called "dats"
+    data = business_short_code + passkey + timestamp
+    # We encode data into base64(ASCII)
+    encoded = base64.b64encode(data.encode())
+    # Decode with utf-8
+    # This might be useful if you need to pass this string as a parameter in an API request
+    # Its a requirement by Safaricom to be in UTF-8(web)
+    password = encoded.decode('utf-8')
+    print(password)
 
-        # BODY OR PAYLOAD
-        payload = {
-            "BusinessShortCode": "174379",
-            "Password": "{}".format(password),
-            "Timestamp": "{}".format(timestamp),
-            "TransactionType": "CustomerPayBillOnline",
-            "Amount": "1",  # use 1 when testing
-            "PartyA": phone,  # change to your number
-            "PartyB": "174379",
-            "PhoneNumber": phone,
-            "CallBackURL": "https://modcom.co.ke/job/confirmation.php",
-            "AccountReference": "account",
-            "TransactionDesc": "account"
-        }
+    # BODY OR PAYLOAD
+    payload = {
+    "BusinessShortCode": "174379",
+    "Password": "{}".format(password),
+    "Timestamp": "{}".format(timestamp),
+    "TransactionType": "CustomerPayBillOnline",
+    "Amount": amount, # use 1 when testing
+    "PartyA": phone, # change to your number
+    "PartyB": "174379",
+    "PhoneNumber": phone,
+    "CallBackURL": "https://modcom.co.ke/job/confirmation.php",
+    "AccountReference": "account",
+    "TransactionDesc": "account"
+    }
 
-        # POPULAING THE HTTP HEADER, jjjj
-        headers = {
-            "Authorization": access_token,
-            "Content-Type": "application/json"
-        }
+    # POPULATING THE HTTP HEADER
+    # Headers carry the access token and content type
+    # JSON is the format of data
+    headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type": "application/json"
+    }
 
-        url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"  # C2B URL
+    # SPECIFY SAFARICOM URL
+    url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest" # C2B URL
 
-        response = requests.post(url, json=payload, headers=headers)
-        print(response.text)
-        return '<h3>Please Complete Payment in Your Phone and we will deliver in minutes</h3>' \
-               '<a href="/" class="btn btn-dark btn-sm">Back to Products</a>'
+    # Finally, using requests, we post payload and headers to above url
+    # Below code will automatically send a SIM TOOLKIT(stk) push to your phone
+
+    response = requests.post(url, json=payload, headers=headers)
+    print(response.text)
+```
+
+
+Next Go to **app.py** and create below route to trigger an MPESA STK Push on Your Phone
+```
+# Below we only need to use a POST, as posted in our Single item
+@app.route('/payment', methods = ['POST'])
+def payment():
+    # Receive the amount and phone from single item
+    phone = request.form['phone']
+    amount = request.form['amount']
+    # import mpesa.py module
+    import mpesa
+    # Call the stk push function present in mpesa.py
+    mpesa.stk_push(phone, amount)
+    # SHow user below message.
+    return '<h3>Please Complete Payment in Your Phone and we will deliver in minutes</h3>' \
+    '<a href='' class="btn btn-dark btn-sm">Back to Products</a>'
 ```
 	
 
-ABove Code used MPESA Safaricom MPESA Integration to Make Payment, Check https://developer.safaricom.co.ke/  For more documentation.
+Above Code used MPESA Safaricom MPESA Integration to Make Payment, Check https://developer.safaricom.co.ke/  For more documentation.
 
 Now Run your App. <br/>
 Right click inside **app.py** and the select  **Run Python file in Terminal**  <br/>
