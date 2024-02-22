@@ -1158,11 +1158,11 @@ def mpesa():
     amount = request.form['amount']
     # import mpesa.py module
     import mpesa
-    # Call the stk push function present in mpesa.py
+    # Call the SIM Toolkit(stk) push function present in mpesa.py
     mpesa.stk_push(phone, amount)
     # SHow user below message.
     return '<h3>Please Complete Payment in Your Phone and we will deliver in minutes</h3>' \
-    '<a href='/' class="btn btn-dark btn-sm">Back to Products</a>'
+    '<a href="/" class="btn btn-dark btn-sm">Back to Products</a>'
 ```
 	
 
@@ -1173,11 +1173,13 @@ Right click inside **app.py** and the select  **Run Python file in Terminal**  <
 Now access  http://127.0.0.1:5000/signin From your browser. <br/>
 
 Once You sign in Click on Any Product(Costing 1 or 2 Shillings For Testing purposes) - Buy Now Button.<br/><br/> The SIngle Item will show a Form to input Phone Number. <br>
+<br> 
 ![image](https://github.com/modcomlearning/web/assets/66998462/3aa1b004-2851-4c7f-a66f-694872c9108e)
 
 You will see a Form requesting For a phone Number Please Your Phone Number - :point_up_2: - Must Start with +254XXXXXXXXX.
 Here we selected a Cheaper Product at 1 KES to Allow make a Smaller Payment Via MPESA. Click on Pay Now, Check Your Phone youll see below screen, Enter PIN and Make Your Payment.<br/><br/>
-
+Hope you received an STK on your Phone  <br>
+:thumbsup:  :muscle:  <br>
 ![image](https://user-images.githubusercontent.com/66998462/224219567-da379751-0c1b-4874-af03-beb5d3e53cfe.png)
 
 This Guide did a Complete e commerce web application that includes Routing, Templates, Static Files, Jinja2, Database Connection using MySQL, Display of Products By Category, Display Single Product, Display Similar Products, Sign Up, Sign In, Sign Out, Manage User Sessions, Send SMS, Checkout, Lipa Na MPESA etc.
