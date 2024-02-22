@@ -1071,12 +1071,11 @@ Go to **single_item.html**, Somewhere in this Page, Preferably after the section
 <br>
 Above we action our form to /mpesa route to be created in Next steps<br>
 NB: You need to install requests if not already installed. use below command to install <br>
-Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA.
-
 ```
   pip3 install requests
 ```
-
+Requests allows you to send HTTP requests extremely easy. Will be used in sending payment request to MPESA.
+<br><br>
 Create a File named **mpesa.py**, and place below code inside.
 ```
 import requests
@@ -1150,7 +1149,7 @@ Next Go to **app.py** and create below route to trigger an MPESA STK Push on You
 ```
 # Below we only need to use a POST, as posted in our Single item
 @app.route('/mpesa', methods = ['POST'])
-def payment():
+def mpesa():
     # Receive the amount and phone from single item
     phone = request.form['phone']
     amount = request.form['amount']
