@@ -1322,12 +1322,13 @@ This Guide did a Complete e commerce web application known as Soko Garden that i
 Hope you liked SokoGarden Project, Buy me a Coffee :coffee: :clap: <br/>
 Follow us on twitter @ModcomKenya
 
-<!--
+
 ## Step 17  - Student Assesment
 In this Section you will advance the SokoGarden by adding Vendor Register, Create a Form to save a Vendor to the database, <br/>
 Part 1: Creating a Table
 In your Database Create below table
-
+NB: You can refer from signup as you do this assignment, its more similar to sign up.
+<br/>
 ![image](https://user-images.githubusercontent.com/66998462/224652003-8060d600-1e5f-471c-962a-10b804b0511b.png)
 
 
@@ -1361,6 +1362,6 @@ Check Your vendor table, The Vendor Record Should appear in the Table.
 
 Done.
 End
--->
+
 
 
